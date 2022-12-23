@@ -1,0 +1,2 @@
+# flutter_github_search
+Flutterで作るGithubリポジトリ検索アプリ
