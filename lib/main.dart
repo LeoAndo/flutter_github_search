@@ -19,9 +19,6 @@ class MyApp extends StatelessWidget {
         ColorScheme lightScheme;
         ColorScheme darkScheme;
 
-        print("lightDynamic: $lightDynamic");
-        print("darkDynamic: $darkDynamic");
-
         if (lightDynamic != null && darkDynamic != null) {
           lightScheme = lightDynamic.harmonized();
           lightCustomColors = lightCustomColors.harmonized(lightScheme);
