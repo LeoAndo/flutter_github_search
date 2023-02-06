@@ -33,7 +33,7 @@ class MyApp extends StatelessWidget {
         }
 
         return MaterialApp(
-          title: 'Flutter Demo',
+          title: 'Github Search App',
           theme: ThemeData(
             useMaterial3: true,
             colorScheme: lightScheme,
@@ -44,7 +44,7 @@ class MyApp extends StatelessWidget {
             colorScheme: darkScheme,
             extensions: [darkCustomColors],
           ),
-          home: const MyHomePage(title: 'Flutter Demo Home Page'),
+          home: const MyHomePage(title: 'Home Page'),
         );
       },
     );
