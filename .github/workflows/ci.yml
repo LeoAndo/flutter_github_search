@@ -18,15 +18,20 @@ permissions:
   pull-requests: write
 
 jobs:
-
+  # Check static dart formatting
   format:
     runs-on: ubuntu-latest
     steps:
-      - name: Checkout
-        uses: actions/checkout@v3
-      - name: Run dart format
-        run: dart format -o none --set-exit-if-changed .
+      - uses: actions/checkout@v3
+      - uses: dart-lang/setup-dart@v1
+      
+      - name: Install dependencies
+        run: dart pub get
+        
+      - name: Verify formatting
+        run: dart format --output=none --set-exit-if-changed .
 
+  # Check flutter static analysis
   analyze:
     runs-on: ubuntu-latest
     timeout-minutes: 30
@@ -83,6 +88,7 @@ jobs:
         env:
           DANGER_GITHUB_API_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
+  # Check flutter test
   test:
     runs-on: ubuntu-latest
     timeout-minutes: 30
