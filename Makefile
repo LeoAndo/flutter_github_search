@@ -4,16 +4,16 @@ SHELL=/bin/bash
 
 .PHONY: clean
 clean:
-	flutter clean
-	flutter pub get
+	fvm flutter clean
+	fvm flutter pub get
 
 .PHONY: check 
 check:
-	dart format --output=none . > format_result.txt
-	flutter analyze > analyze_result.txt
+	fvm dart format --output=none . > format_result.txt
+	fvm flutter analyze > analyze_result.txt
 
 .PHONY: format-analyze
 format:
-	flutter pub run import_sorter:main
-	dart format .
-	flutter analyze
+	fvm flutter pub run import_sorter:main
+	fvm dart format .
+	fvm flutter analyze
