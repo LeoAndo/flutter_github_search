@@ -1,6 +1,10 @@
-import 'package:dynamic_color/dynamic_color.dart';
+// Flutter imports:
 import 'package:flutter/material.dart';
 
+// Package imports:
+import 'package:dynamic_color/dynamic_color.dart';
+
+// Project imports:
 import 'color_schemes.g.dart';
 import 'custom_color.g.dart';
 

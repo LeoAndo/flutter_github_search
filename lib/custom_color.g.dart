@@ -1,5 +1,8 @@
-import 'package:dynamic_color/dynamic_color.dart';
+// Flutter imports:
 import 'package:flutter/material.dart';
+
+// Package imports:
+import 'package:dynamic_color/dynamic_color.dart';
 
 const customcolor1 = Color(0xFF006A96);
 const customcolor2 = Color(0xFF92EE57);
