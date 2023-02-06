@@ -8,10 +8,12 @@ clean:
 	flutter pub get
 
 .PHONY: format-check 
-format:
-	dart format --output=none .
+format-check:
+	dart format --output=none . > format_result.txt
+	flutter analyze > analyze_result.txt
 
-.PHONY: format-analyze
-format-analyze:
+.PHONY: format
+format:
+	flutter pub run import_sorter:main
 	dart format .
 	flutter analyze
