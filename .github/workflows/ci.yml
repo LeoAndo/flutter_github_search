@@ -4,7 +4,6 @@ on:
   push:
     branches:
       - main
-      - develop
     paths-ignore:
       - '**.md'
   pull_request:
@@ -33,7 +32,6 @@ jobs:
           if [ -n "$PREPROCESS_SCRIPT_BASE64" ]; then
             echo $PREPROCESS_SCRIPT_BASE64 | base64 --decode > ./pre-process.sh && bash ./pre-process.sh
           fi
-
       - name: Install Flutter
         uses: subosito/flutter-action@v2
         with:
@@ -53,7 +51,6 @@ jobs:
         shell: bash
         run: |
           flutter analyze | tee ./flutter_analyze_report.txt
-
       - name: Remove matcher
         if: always()
         run: echo "::remove-matcher owner=dart-analyzer::"
@@ -91,7 +88,6 @@ jobs:
           if [ -n "$PREPROCESS_SCRIPT_BASE64" ]; then
             echo $PREPROCESS_SCRIPT_BASE64 | base64 --decode > ./pre-process.sh && bash ./pre-process.sh
           fi
-
       - name: Install Flutter
         uses: subosito/flutter-action@v2
         with:
