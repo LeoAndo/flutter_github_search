@@ -1,31 +1,21 @@
-.PHONY: setup
-setup:
-	npm install
+SHELL=/bin/bash
 
-.PHONY: dependencies
-dependencies:
+.PHONY: $(shell egrep -oh ^[a-zA-Z0-9][a-zA-Z0-9_-]+: $(MAKEFILE_LIST) | sed 's/://')
+
+.PHONY: clean
+clean:
+	flutter clean
 	flutter pub get
 
 .PHONY: analyze
 analyze:
 	flutter analyze
 
-.PHONY: format 
+.PHONY: format-check 
 format:
-	flutter format lib/
+	dart format -o none .
 
 .PHONY: format-analyze
 format-analyze:
-	flutter format --dry-run lib/
+	dart format .
 	flutter analyze
-
-.PHONY: build-runner
-build-runner:
-	flutter packages pub run build_runner build --delete-conflicting-outputs
-  
-.PHONY: clean-build
-clean-build:
-  flutter clean
-  flutter pub get
-	flutter packages pub run build_runner build --delete-conflicting-outputs
-  flutter build
