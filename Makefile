@@ -7,13 +7,9 @@ clean:
 	flutter clean
 	flutter pub get
 
-.PHONY: analyze
-analyze:
-	flutter analyze
-
 .PHONY: format-check 
 format:
-	dart format -o none .
+	dart format --output=none .
 
 .PHONY: format-analyze
 format-analyze:

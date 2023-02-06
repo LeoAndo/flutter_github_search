@@ -7,7 +7,6 @@ import 'package:dynamic_color/dynamic_color.dart';
 const customcolor1 = Color(0xFF006A96);
 const customcolor2 = Color(0xFF92EE57);
 
-
 CustomColors lightCustomColors = const CustomColors(
   sourceCustomcolor1: Color(0xFF006A96),
   customcolor1: Color(0xFF00658F),
@@ -33,8 +32,6 @@ CustomColors darkCustomColors = const CustomColors(
   customcolor2Container: Color(0xFF225100),
   onCustomcolor2Container: Color(0xFF9DFA61),
 );
-
-
 
 /// Defines a set of custom colors, each comprised of 4 complementary tones.
 ///
@@ -83,13 +80,17 @@ class CustomColors extends ThemeExtension<CustomColors> {
       sourceCustomcolor1: sourceCustomcolor1 ?? this.sourceCustomcolor1,
       customcolor1: customcolor1 ?? this.customcolor1,
       onCustomcolor1: onCustomcolor1 ?? this.onCustomcolor1,
-      customcolor1Container: customcolor1Container ?? this.customcolor1Container,
-      onCustomcolor1Container: onCustomcolor1Container ?? this.onCustomcolor1Container,
+      customcolor1Container:
+          customcolor1Container ?? this.customcolor1Container,
+      onCustomcolor1Container:
+          onCustomcolor1Container ?? this.onCustomcolor1Container,
       sourceCustomcolor2: sourceCustomcolor2 ?? this.sourceCustomcolor2,
       customcolor2: customcolor2 ?? this.customcolor2,
       onCustomcolor2: onCustomcolor2 ?? this.onCustomcolor2,
-      customcolor2Container: customcolor2Container ?? this.customcolor2Container,
-      onCustomcolor2Container: onCustomcolor2Container ?? this.onCustomcolor2Container,
+      customcolor2Container:
+          customcolor2Container ?? this.customcolor2Container,
+      onCustomcolor2Container:
+          onCustomcolor2Container ?? this.onCustomcolor2Container,
     );
   }
 
@@ -99,16 +100,22 @@ class CustomColors extends ThemeExtension<CustomColors> {
       return this;
     }
     return CustomColors(
-      sourceCustomcolor1: Color.lerp(sourceCustomcolor1, other.sourceCustomcolor1, t),
+      sourceCustomcolor1:
+          Color.lerp(sourceCustomcolor1, other.sourceCustomcolor1, t),
       customcolor1: Color.lerp(customcolor1, other.customcolor1, t),
       onCustomcolor1: Color.lerp(onCustomcolor1, other.onCustomcolor1, t),
-      customcolor1Container: Color.lerp(customcolor1Container, other.customcolor1Container, t),
-      onCustomcolor1Container: Color.lerp(onCustomcolor1Container, other.onCustomcolor1Container, t),
-      sourceCustomcolor2: Color.lerp(sourceCustomcolor2, other.sourceCustomcolor2, t),
+      customcolor1Container:
+          Color.lerp(customcolor1Container, other.customcolor1Container, t),
+      onCustomcolor1Container:
+          Color.lerp(onCustomcolor1Container, other.onCustomcolor1Container, t),
+      sourceCustomcolor2:
+          Color.lerp(sourceCustomcolor2, other.sourceCustomcolor2, t),
       customcolor2: Color.lerp(customcolor2, other.customcolor2, t),
       onCustomcolor2: Color.lerp(onCustomcolor2, other.onCustomcolor2, t),
-      customcolor2Container: Color.lerp(customcolor2Container, other.customcolor2Container, t),
-      onCustomcolor2Container: Color.lerp(onCustomcolor2Container, other.onCustomcolor2Container, t),
+      customcolor2Container:
+          Color.lerp(customcolor2Container, other.customcolor2Container, t),
+      onCustomcolor2Container:
+          Color.lerp(onCustomcolor2Container, other.onCustomcolor2Container, t),
     );
   }
 
@@ -127,8 +134,10 @@ class CustomColors extends ThemeExtension<CustomColors> {
       sourceCustomcolor2: sourceCustomcolor2!.harmonizeWith(dynamic.primary),
       customcolor2: customcolor2!.harmonizeWith(dynamic.primary),
       onCustomcolor2: onCustomcolor2!.harmonizeWith(dynamic.primary),
-      customcolor2Container: customcolor2Container!.harmonizeWith(dynamic.primary),
-      onCustomcolor2Container: onCustomcolor2Container!.harmonizeWith(dynamic.primary),
+      customcolor2Container:
+          customcolor2Container!.harmonizeWith(dynamic.primary),
+      onCustomcolor2Container:
+          onCustomcolor2Container!.harmonizeWith(dynamic.primary),
     );
   }
 }
