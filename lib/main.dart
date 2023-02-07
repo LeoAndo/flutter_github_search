@@ -5,8 +5,8 @@ import 'package:flutter/material.dart';
 import 'package:dynamic_color/dynamic_color.dart';
 
 // Project imports:
-import 'color_schemes.g.dart';
-import 'custom_color.g.dart';
+import 'color_schemes.dart';
+import 'custom_color.dart';
 
 void main() {
   runApp(const MyApp());
