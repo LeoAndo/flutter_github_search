@@ -1,4 +1,5 @@
-# If you want to exclude it from the pull request diff, add it below
+# see: https://zenn.dev/mamushi/articles/hide_generated_file_diff
+# 自動生成ファイルの diff をGithub Pull Requestに表示しないようにする
 *.freezed.dart linguist-generated=true
 *.g.dart linguist-generated=true
 *.gen.dart linguist-generated=true
