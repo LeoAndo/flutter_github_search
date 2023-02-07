@@ -1,15 +1,16 @@
+// Dart imports:
+import 'dart:convert' as convert;
+
 // Flutter imports:
 import 'package:flutter/material.dart';
 
 // Package imports:
 import 'package:dynamic_color/dynamic_color.dart';
+import 'package:http/http.dart' as http;
 
 // Project imports:
 import 'color_schemes.dart';
 import 'custom_color.dart';
-import 'dart:convert' as convert;
-
-import 'package:http/http.dart' as http;
 
 void main() {
   runApp(const MyApp());
