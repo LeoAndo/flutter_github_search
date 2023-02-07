@@ -13,7 +13,7 @@ check:
 	fvm flutter analyze > analyze_result.txt
 
 .PHONY: format-analyze
-format:
+format-analyze:
 	fvm flutter pub run import_sorter:main
 	fvm dart format .
 	fvm flutter analyze
