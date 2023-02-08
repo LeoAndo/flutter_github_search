@@ -1,7 +1,8 @@
+// Dart imports:
 import 'dart:convert' as convert;
 
+// Project imports:
 import 'package:flutter_github_search/domain/exception/api_exceptions.dart';
-
 import 'github_api_http_client.dart';
 
 class GithubApi {
@@ -21,7 +22,7 @@ class GithubApi {
       };
       final response = await client
           .get(Uri.https(_authority, '/search/repositories', queryParameters));
-      //final json = convert.jsonDecode(response.body) as Map<String, dynamic>;
+      convert.jsonDecode(response.body) as Map<String, dynamic>;
     } on ApiException catch (_) {}
   }
 }

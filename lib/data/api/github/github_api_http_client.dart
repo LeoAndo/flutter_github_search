@@ -1,7 +1,11 @@
+// Dart imports:
 import 'dart:async';
 import 'dart:convert' as convert;
+
+// Package imports:
 import 'package:http/http.dart' as http;
 
+// Project imports:
 import '../../../domain/exception/api_exceptions.dart';
 
 class GithubApiHttpClient extends http.BaseClient {
@@ -27,7 +31,7 @@ class GithubApiHttpClient extends http.BaseClient {
     return super.get(url, headers: headers).then((response) {
       return _handleResponse(response);
     }).catchError((error, stackTrace) {
-      _handleError(error, stackTrace);
+      return _handleError(error, stackTrace);
     });
   }
 
