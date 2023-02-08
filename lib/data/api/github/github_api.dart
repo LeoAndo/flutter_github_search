@@ -21,17 +21,7 @@ class GithubApi {
       };
       final response = await client
           .get(Uri.https(_authority, '/search/repositories', queryParameters));
-      final json = convert.jsonDecode(response.body) as Map<String, dynamic>;
-      print('ando result json: ${json['items']}');
-    } on ApiException catch (ex) {
-      if (ex is UnAuthorizedException) {
-        print('ando result type is UnAuthorizedException');
-      }
-      if (ex is NetworkException) {
-        print('ando result type is NetworkException');
-      }
-      print('ando result type: ${ex}');
-      print('ando result message: ${ex.message}');
-    }
+      //final json = convert.jsonDecode(response.body) as Map<String, dynamic>;
+    } on ApiException catch (_) {}
   }
 }

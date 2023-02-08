@@ -34,8 +34,6 @@ class GithubApiHttpClient extends http.BaseClient {
   http.Response _handleResponse(http.Response response) {
     final json = convert.jsonDecode(response.body) as Map<String, dynamic>;
     final statusCode = response.statusCode;
-    print("ando then body ${response.body}");
-    print("ando then json $json");
     if (statusCode == 200) {
       return response; // 正常系はそのままレスポンス値を返す。
     } else if (statusCode >= 300 && statusCode <= 399) {
