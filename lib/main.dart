@@ -7,7 +7,6 @@ import 'package:dynamic_color/dynamic_color.dart';
 // Project imports:
 import 'color_schemes.dart';
 import 'custom_color.dart';
-import 'data/api/github/github_api.dart';
 
 void main() {
   runApp(const MyApp());
