@@ -78,7 +78,7 @@ class _MyHomePageState extends State<MyHomePage> {
   int _counter = 0;
 
   void _searchRepositories() {
-    GithubApi().searchRepositories(query: 'flutter', page: 1, perPage: 1);
+    // GithubApi().searchRepositories(query: 'flutter', page: 1, perPage: 1);
     setState(() {
       // This call to setState tells the Flutter framework that something has
       // changed in this State, which causes it to rerun the build method below
