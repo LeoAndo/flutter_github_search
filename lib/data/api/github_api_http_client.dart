@@ -6,7 +6,7 @@ import 'dart:convert' as convert;
 import 'package:http/http.dart' as http;
 
 // Project imports:
-import '../../../domain/exception/api_exceptions.dart';
+import '../../domain/exception/api_exceptions.dart';
 
 class GithubApiHttpClient extends http.BaseClient {
   static const String _accessToken = "INPUT HERE TOKEN";

@@ -3,13 +3,14 @@ import 'package:flutter/material.dart';
 
 // Package imports:
 import 'package:dynamic_color/dynamic_color.dart';
+import 'package:flutter_riverpod/flutter_riverpod.dart';
 
 // Project imports:
 import 'color_schemes.dart';
 import 'custom_color.dart';
 
 void main() {
-  runApp(const MyApp());
+  runApp(ProviderScope(child: MyApp()));
 }
 
 class MyApp extends StatelessWidget {
