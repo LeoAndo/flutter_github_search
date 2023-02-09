@@ -7,9 +7,17 @@ part of 'repository_summary.dart';
 // **************************************************************************
 
 _$_RepositorySummary _$$_RepositorySummaryFromJson(Map<String, dynamic> json) =>
-    _$_RepositorySummary(
-      name: json['name'] as String,
-      owner: Owner.fromJson(json['owner'] as Map<String, dynamic>),
+    $checkedCreate(
+      r'_$_RepositorySummary',
+      json,
+      ($checkedConvert) {
+        final val = _$_RepositorySummary(
+          name: $checkedConvert('name', (v) => v as String),
+          owner: $checkedConvert(
+              'owner', (v) => Owner.fromJson(v as Map<String, dynamic>)),
+        );
+        return val;
+      },
     );
 
 Map<String, dynamic> _$$_RepositorySummaryToJson(

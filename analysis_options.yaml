@@ -27,3 +27,10 @@ linter:
 
 # Additional information about this file can be found at
 # https://dart.dev/guides/language/analysis-options
+
+# freezedの自動生成のワーニング対策 -START
+# https://github.com/rrousselGit/freezed/issues/481#issuecomment-1208075701
+analyzer:
+  exclude:
+    - "**/*.g.dart"
+# freezedの自動生成のワーニング対策 -END
