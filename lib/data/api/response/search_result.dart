@@ -7,8 +7,6 @@ import 'package:freezed_annotation/freezed_annotation.dart';
 // Project imports:
 import 'repository_summary.dart';
 
-// 🌎 Project imports:;
-
 part 'search_result.freezed.dart';
 part 'search_result.g.dart';
 
