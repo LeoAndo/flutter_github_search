@@ -11,7 +11,7 @@ import '../../domain/exception/api_exceptions.dart';
 class HttpHandler {
   const HttpHandler();
 
-  http.Response handleResponse(http.Response response) {
+  http.Response handleGithubApiResponse(http.Response response) {
     final json = convert.jsonDecode(response.body) as Map<String, dynamic>;
     final statusCode = response.statusCode;
     if (statusCode == 200) {

@@ -29,7 +29,7 @@ class GithubApiHttpClient extends http.BaseClient {
   @override
   Future<http.Response> get(Uri url, {Map<String, String>? headers}) {
     return super.get(url, headers: headers).then((response) {
-      return _httpHandler.handleResponse(response);
+      return _httpHandler.handleGithubApiResponse(response);
     }).catchError((error, stackTrace) {
       return _httpHandler.handleError(error, stackTrace);
     });
