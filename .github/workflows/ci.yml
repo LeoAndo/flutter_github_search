@@ -38,6 +38,9 @@ jobs:
       - name: Run flutter pub get
         run: flutter pub get
         
+      - name: Run flutter pub run build_runner
+        run: flutter pub run build_runner build --delete-conflicting-outputs
+        
       - name: Verify formatting
         run: dart format --output=none --set-exit-if-changed .
 
@@ -62,6 +65,9 @@ jobs:
       - name: Run flutter pub get
         run: flutter pub get
         
+      - name: Run flutter pub run build_runner
+        run: flutter pub run build_runner build --delete-conflicting-outputs
+        
       - name: Run import_sorter
         run: flutter pub run import_sorter:main --exit-if-changed
 
@@ -85,6 +91,9 @@ jobs:
 
       - name: Run flutter pub get
         run: flutter pub get
+        
+      - name: Run flutter pub run build_runner
+        run: flutter pub run build_runner build --delete-conflicting-outputs
 
       - name: Install matcher
         run: echo "::add-matcher::.github/analyzer-problem-matcher.json"
@@ -135,6 +144,9 @@ jobs:
 
       - name: Run flutter pub get
         run: flutter pub get
+        
+      - name: Run flutter pub run build_runner
+        run: flutter pub run build_runner build --delete-conflicting-outputs
 
       - name: Run flutter test
         run: flutter test
