@@ -4,10 +4,13 @@ import 'package:flutter/material.dart';
 // Package imports:
 import 'package:dynamic_color/dynamic_color.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:logger/logger.dart';
 
 // Project imports:
-import 'color_schemes.dart';
-import 'custom_color.dart';
+import 'package:flutter_github_search/ui/search/search_state_notifier.dart';
+import 'domain/exception/api_exceptions.dart';
+import 'ui/theme/color_schemes.dart';
+import 'ui/theme/custom_color.dart';
 
 // import 'data/api/github_api.dart';
 
@@ -58,70 +61,46 @@ class MyApp extends StatelessWidget {
   }
 }
 
-class MyHomePage extends StatefulWidget {
+class MyHomePage extends ConsumerStatefulWidget {
   const MyHomePage({super.key, required this.title});
-
-  // This widget is the home page of your application. It is stateful, meaning
-  // that it has a State object (defined below) that contains fields that affect
-  // how it looks.
-
-  // This class is the configuration for the state. It holds the values (in this
-  // case the title) provided by the parent (in this case the App widget) and
-  // used by the build method of the State. Fields in a Widget subclass are
-  // always marked "final".
-
   final String title;
 
   @override
-  State<MyHomePage> createState() => _MyHomePageState();
+  ConsumerState<ConsumerStatefulWidget> createState() => _MyHomePageState();
 }
 
-class _MyHomePageState extends State<MyHomePage> {
+class _MyHomePageState extends ConsumerState<MyHomePage> {
   int _counter = 0;
 
-  void _searchRepositories() {
+  void _countUp() {
     setState(() {
-      // This call to setState tells the Flutter framework that something has
-      // changed in this State, which causes it to rerun the build method below
-      // so that the display can reflect the updated values. If we changed
-      // _counter without calling setState(), then the build method would not be
-      // called again, and so nothing would appear to happen.
       _counter++;
     });
   }
 
   @override
   Widget build(BuildContext context) {
-    // This method is rerun every time setState is called, for instance as done
-    // by the _incrementCounter method above.
-    //
-    // The Flutter framework has been optimized to make rerunning build methods
-    // fast, so that you can just rebuild anything that needs updating rather
-    // than having to individually change instances of widgets.
+    final uiState = ref.watch(searchStateNotifierProvider);
+    uiState.when(
+      data: (repositories) {
+        Logger().d('ando data ${repositories.first.ownerName}');
+      },
+      error: (ApiException apiException) {
+        Logger().d('ando error message ${apiException.message}');
+      },
+      initial: () {
+        Logger().d('ando initial');
+      },
+      loading: () {
+        Logger().d('ando loading');
+      },
+    );
     return Scaffold(
       appBar: AppBar(
-        // Here we take the value from the MyHomePage object that was created by
-        // the App.build method, and use it to set our appbar title.
         title: Text(widget.title),
       ),
       body: Center(
-        // Center is a layout widget. It takes a single child and positions it
-        // in the middle of the parent.
         child: Column(
-          // Column is also a layout widget. It takes a list of children and
-          // arranges them vertically. By default, it sizes itself to fit its
-          // children horizontally, and tries to be as tall as its parent.
-          //
-          // Invoke "debug painting" (press "p" in the console, choose the
-          // "Toggle Debug Paint" action from the Flutter Inspector in Android
-          // Studio, or the "Toggle Debug Paint" command in Visual Studio Code)
-          // to see the wireframe for each widget.
-          //
-          // Column has various properties to control how it sizes itself and
-          // how it positions its children. Here we use mainAxisAlignment to
-          // center the children vertically; the main axis here is the vertical
-          // axis because Columns are vertical (the cross axis would be
-          // horizontal).
           mainAxisAlignment: MainAxisAlignment.center,
           children: <Widget>[
             const Text(
@@ -134,10 +113,21 @@ class _MyHomePageState extends State<MyHomePage> {
           ],
         ),
       ),
-      floatingActionButton: FloatingActionButton(
-        onPressed: _searchRepositories,
-        tooltip: 'Search',
-        child: const Icon(Icons.search),
+      floatingActionButton: Column(
+        children: [
+          FloatingActionButton(
+            onPressed: _countUp,
+            tooltip: 'add',
+            child: const Icon(Icons.add),
+          ),
+          FloatingActionButton(
+            onPressed: () => ref
+                .read(searchStateNotifierProvider.notifier)
+                .searchRepositories(),
+            tooltip: 'Search',
+            child: const Icon(Icons.search),
+          ),
+        ],
       ), // This trailing comma makes auto-formatting nicer for build methods.
     );
   }

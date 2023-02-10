@@ -19,6 +19,7 @@ run-gen:
 check:
 	fvm dart format --output=none . > format_result.txt
 	fvm flutter analyze > analyze_result.txt
+	fvm flutter test > test_result.txt
 
 # formatを適用する
 .PHONY: format

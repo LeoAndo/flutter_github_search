@@ -1,9 +1,16 @@
 // Dart imports:
 import 'dart:convert' as convert;
 
+// Package imports:
+import 'package:flutter_riverpod/flutter_riverpod.dart';
+
 // Project imports:
 import './response/search_repositories/search_repositories_response.dart';
 import 'github_api_http_client.dart';
+
+final Provider githubApiProvider = Provider<GithubApi>((_) {
+  return GithubApi();
+});
 
 class GithubApi {
   static const _authority = 'api.github.com';
