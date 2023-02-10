@@ -37,6 +37,22 @@ class _SearchScreenState extends ConsumerState<SearchScreen> {
   Widget _buildBody(BuildContext context, WidgetRef ref) {
     final uiState = ref.watch(searchStateNotifierProvider);
     return uiState.when(
+      loading: () {
+        return _buildBaseBody(
+          child: const LoadingView(),
+          onFieldSubmitted: (_) {},
+        );
+      },
+      initial: () => _buildBaseBody(
+          child: _buildListView(
+            repositories: [],
+            onTap: (_) {},
+          ),
+          onFieldSubmitted: (String value) {
+            ref
+                .read(searchStateNotifierProvider.notifier)
+                .searchRepositories(query: value);
+          }),
       data: (repositories) => _buildBaseBody(
           child: _buildListView(
             repositories: repositories,
@@ -64,22 +80,6 @@ class _SearchScreenState extends ConsumerState<SearchScreen> {
                   .read(searchStateNotifierProvider.notifier)
                   .searchRepositories(query: value);
             });
-      },
-      initial: () => _buildBaseBody(
-          child: _buildListView(
-            repositories: [],
-            onTap: (_) {},
-          ),
-          onFieldSubmitted: (String value) {
-            ref
-                .read(searchStateNotifierProvider.notifier)
-                .searchRepositories(query: value);
-          }),
-      loading: () {
-        return _buildBaseBody(
-          child: const LoadingView(),
-          onFieldSubmitted: (_) {},
-        );
       },
     );
   }
