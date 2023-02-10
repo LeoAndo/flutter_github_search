@@ -3,11 +3,11 @@ import 'dart:async';
 import 'dart:convert' as convert;
 
 // Package imports:
-import 'package:flutter_github_search/domain/exception/api_exceptions.dart';
 import 'package:http/http.dart' as http;
 
 // Project imports:
 import 'package:flutter_github_search/data/api/http_handler.dart';
+import 'package:flutter_github_search/domain/exception/api_exceptions.dart';
 
 class GithubApiHttpClient extends http.BaseClient {
   // static const String _accessToken = "INPUT HERE TOKEN";

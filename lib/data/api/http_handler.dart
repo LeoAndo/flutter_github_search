@@ -2,8 +2,10 @@
 import 'dart:async';
 
 // Package imports:
-import 'package:flutter_github_search/domain/exception/api_exceptions.dart';
 import 'package:http/http.dart' as http;
+
+// Project imports:
+import 'package:flutter_github_search/domain/exception/api_exceptions.dart';
 
 // Project imports:
 
