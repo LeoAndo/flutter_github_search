@@ -18,14 +18,12 @@ class SearchStateNotifier extends StateNotifier<UiState> {
   SearchStateNotifier(this._repository) : super(const UiState.initial());
   final GithubRepoRepository _repository;
 
-  void searchRepositories() async {
+  void searchRepositories({required String query}) async {
     try {
       state = const UiState.loading();
-      await Future.delayed(const Duration(seconds: 2)); // ダミー
-
-      // fetch
+      await Future.delayed(const Duration(seconds: 3));
       final repositories = await _repository.searchRepositories(
-          query: 'flutter', page: 1, perPage: 1);
+          query: query, page: 1, perPage: 1);
       state = UiState.data(repositories);
     } on ApiException catch (e) {
       state = UiState.error(e);
