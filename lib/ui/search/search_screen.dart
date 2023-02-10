@@ -11,7 +11,6 @@ import 'package:flutter_github_search/ui/components/loading_view.dart';
 import '../../domain/exception/api_exceptions.dart';
 import '../components/error_view.dart';
 import 'search_state_notifier.dart';
-import 'ui_state.dart';
 
 class SearchScreen extends ConsumerStatefulWidget {
   const SearchScreen({super.key, required this.title});
