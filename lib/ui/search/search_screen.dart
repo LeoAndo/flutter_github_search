@@ -3,11 +3,11 @@ import 'package:flutter/material.dart';
 
 // Package imports:
 import 'package:flutter_riverpod/flutter_riverpod.dart';
-import 'package:logger/logger.dart';
 
 // Project imports:
 import 'package:flutter_github_search/domain/model/repository_summary.dart';
 import 'package:flutter_github_search/ui/components/loading_view.dart';
+import 'package:flutter_github_search/ui/detail/detail_screen.dart';
 import '../../domain/exception/api_exceptions.dart';
 import '../components/error_view.dart';
 import 'search_state_notifier.dart';
@@ -57,7 +57,13 @@ class _SearchScreenState extends ConsumerState<SearchScreen> {
           child: _buildListView(
             repositories: repositories,
             onTap: (repository) {
-              Logger().d('ando onTap: ${repository.id}');
+              Navigator.push<void>(
+                context,
+                MaterialPageRoute<void>(
+                  builder: (BuildContext context) =>
+                      DetailScreen(id: repository.id),
+                ),
+              );
             },
           ),
           onFieldSubmitted: (String value) {

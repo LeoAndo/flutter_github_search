@@ -19,10 +19,9 @@ class GithubRepoRepositoryImpl implements GithubRepoRepository {
 
   @override
   Future<List<RepositorySummary>> searchRepositories(
-      {required String query, required int page, required int perPage}) async {
+      {required String query, required int page}) async {
     // final api = _ref.read(githubApiProvider);
-    final ret = await _api.searchRepositories(
-        query: query, page: page, perPage: perPage);
+    final ret = await _api.searchRepositories(query: query, page: page);
     return ret.toModels();
   }
 }

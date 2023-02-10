@@ -22,8 +22,8 @@ class SearchStateNotifier extends StateNotifier<UiState> {
     try {
       state = const UiState.loading();
       await Future.delayed(const Duration(seconds: 3));
-      final repositories = await _repository.searchRepositories(
-          query: query, page: 1, perPage: 1);
+      final repositories =
+          await _repository.searchRepositories(query: query, page: 1);
       state = UiState.data(repositories);
     } on ApiException catch (e) {
       state = UiState.error(e);
