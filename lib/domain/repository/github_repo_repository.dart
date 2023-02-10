@@ -5,6 +5,5 @@ abstract class GithubRepoRepository {
   Future<List<RepositorySummary>> searchRepositories({
     required String query,
     required int page,
-    required int perPage,
   });
 }

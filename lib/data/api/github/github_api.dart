@@ -18,7 +18,7 @@ class GithubApi {
   Future<SearchRepositoriesResponse> searchRepositories(
       {required String query,
       required int page,
-      required int perPage,
+      int perPage = 20,
       String sort = "stars"}) async {
     final queryParameters = <String, String>{
       'q': query,
