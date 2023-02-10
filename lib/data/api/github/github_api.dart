@@ -2,13 +2,13 @@
 import 'dart:convert' as convert;
 
 // Project imports:
-import 'package:flutter_github_search/data/api/response/search_result.dart';
+import './response/search_repositories/search_repositories_response.dart';
 import 'github_api_http_client.dart';
 
 class GithubApi {
   static const _authority = 'api.github.com';
   final client = GithubApiHttpClient();
-  Future<SearchResult> searchRepositories(
+  Future<SearchRepositoriesResponse> searchRepositories(
       {required String query,
       required int page,
       required int perPage,
@@ -22,6 +22,6 @@ class GithubApi {
     final response = await client
         .get(Uri.https(_authority, '/search/repositories', queryParameters));
     final json = convert.jsonDecode(response.body) as Map<String, dynamic>;
-    return SearchResult.fromJson(json);
+    return SearchRepositoriesResponse.fromJson(json);
   }
 }
