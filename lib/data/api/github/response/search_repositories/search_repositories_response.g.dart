@@ -1,25 +1,25 @@
 // GENERATED CODE - DO NOT MODIFY BY HAND
 
-part of 'search_result.dart';
+part of 'search_repositories_response.dart';
 
 // **************************************************************************
 // JsonSerializableGenerator
 // **************************************************************************
 
-_$_SearchResult _$$_SearchResultFromJson(Map<String, dynamic> json) =>
+_$_SearchRepositoriesResponse _$$_SearchRepositoriesResponseFromJson(
+        Map<String, dynamic> json) =>
     $checkedCreate(
-      r'_$_SearchResult',
+      r'_$_SearchRepositoriesResponse',
       json,
       ($checkedConvert) {
-        final val = _$_SearchResult(
+        final val = _$_SearchRepositoriesResponse(
           totalCount: $checkedConvert('total_count', (v) => v as int),
           incompleteResults:
               $checkedConvert('incomplete_results', (v) => v as bool),
           items: $checkedConvert(
               'items',
               (v) => (v as List<dynamic>)
-                  .map((e) =>
-                      RepositorySummary.fromJson(e as Map<String, dynamic>))
+                  .map((e) => Item.fromJson(e as Map<String, dynamic>))
                   .toList()),
         );
         return val;
@@ -30,7 +30,8 @@ _$_SearchResult _$$_SearchResultFromJson(Map<String, dynamic> json) =>
       },
     );
 
-Map<String, dynamic> _$$_SearchResultToJson(_$_SearchResult instance) =>
+Map<String, dynamic> _$$_SearchRepositoriesResponseToJson(
+        _$_SearchRepositoriesResponse instance) =>
     <String, dynamic>{
       'total_count': instance.totalCount,
       'incomplete_results': instance.incompleteResults,

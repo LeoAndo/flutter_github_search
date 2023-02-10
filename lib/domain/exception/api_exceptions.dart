@@ -21,27 +21,17 @@ abstract class ApiException implements Exception {
 class UnAuthorizedException implements ApiException {
   @override
   final String message;
-  final String documentationUrl;
   @override
   final ApiExceptionType type = ApiExceptionType.unAuthorized;
-  const UnAuthorizedException(this.message, this.documentationUrl);
-  @override
-  String toString() {
-    return '$message : $documentationUrl';
-  }
+  const UnAuthorizedException(this.message);
 }
 
 class ForbiddenExeption implements ApiException {
   @override
   final String message;
-  final String documentationUrl;
   @override
   final ApiExceptionType type = ApiExceptionType.forbidden;
-  const ForbiddenExeption(this.message, this.documentationUrl);
-  @override
-  String toString() {
-    return '$message : $documentationUrl';
-  }
+  const ForbiddenExeption(this.message);
 }
 
 class NetworkException implements ApiException {
@@ -55,14 +45,9 @@ class NetworkException implements ApiException {
 class UnprocessableEntityException implements ApiException {
   @override
   final String message;
-  final String documentationUrl;
   @override
   final ApiExceptionType type = ApiExceptionType.unprocessableEntity;
-  const UnprocessableEntityException(this.message, this.documentationUrl);
-  @override
-  String toString() {
-    return '$message : $documentationUrl';
-  }
+  const UnprocessableEntityException(this.message);
 }
 
 class UnknownException implements ApiException {
@@ -76,38 +61,23 @@ class UnknownException implements ApiException {
 class NotFoundException implements ApiException {
   @override
   final String message;
-  final String documentationUrl;
   @override
   final ApiExceptionType type = ApiExceptionType.notFound;
-  const NotFoundException(this.message, this.documentationUrl);
-  @override
-  String toString() {
-    return '$message : $documentationUrl';
-  }
+  const NotFoundException(this.message);
 }
 
 class RedirectException implements ApiException {
   @override
   final String message;
-  final String documentationUrl;
   @override
   final ApiExceptionType type = ApiExceptionType.redirect;
-  const RedirectException(this.message, this.documentationUrl);
-  @override
-  String toString() {
-    return '$message : $documentationUrl';
-  }
+  const RedirectException(this.message);
 }
 
 class ServerException implements ApiException {
   @override
   final String message;
-  final String documentationUrl;
   @override
   final ApiExceptionType type = ApiExceptionType.server;
-  const ServerException(this.message, this.documentationUrl);
-  @override
-  String toString() {
-    return '$message : $documentationUrl';
-  }
+  const ServerException(this.message);
 }

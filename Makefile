@@ -9,18 +9,22 @@ clean:
 	fvm flutter pub get
 	fvm flutter pub run build_runner build --delete-conflicting-outputs
 
+# freezed関連のファイルを修正したら、こちらの自動生成コマンドを実行する
+.PHONY: run-gen
+run-gen:
+	fvm flutter pub run build_runner build --delete-conflicting-outputs
+
 # format + 静的解析の実行結果を確認する
 .PHONY: check 
 check:
 	fvm dart format --output=none . > format_result.txt
 	fvm flutter analyze > analyze_result.txt
 
-# format + 静的解析を行う
-.PHONY: format-analyze
-format-analyze:
+# formatを適用する
+.PHONY: format
+format:
 	fvm flutter pub run import_sorter:main
 	fvm dart format .
-	fvm flutter analyze
 
 # pubspec.yamlに記載の全てのpackageのUpdateを行う
 .PHONY: pub-upgrade
@@ -42,7 +46,7 @@ pub-add-riverpod:
 	fvm flutter pub add hooks_riverpod
 	fvm flutter pub add flutter_riverpod
 
-# freezed関連のファイルをを修正したら、こちらの自動生成コマンドを実行する
-.PHONY: freezed-run-generator
-freezed-run-generator:
-	fvm flutter pub run build_runner build --delete-conflicting-outputs
+# logger packageの追加を行う (https://pub.dev/packages/logger/)
+.PHONY: pub-add-logger
+pub-add-logger:
+	fvm flutter pub add logger

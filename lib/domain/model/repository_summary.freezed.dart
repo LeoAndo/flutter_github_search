@@ -14,16 +14,12 @@ T _$identity<T>(T value) => value;
 final _privateConstructorUsedError = UnsupportedError(
     'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#custom-getters-and-methods');
 
-RepositorySummary _$RepositorySummaryFromJson(Map<String, dynamic> json) {
-  return _RepositorySummary.fromJson(json);
-}
-
 /// @nodoc
 mixin _$RepositorySummary {
+  int get id => throw _privateConstructorUsedError;
   String get name => throw _privateConstructorUsedError;
-  Owner get owner => throw _privateConstructorUsedError;
+  String get ownerName => throw _privateConstructorUsedError;
 
-  Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
   @JsonKey(ignore: true)
   $RepositorySummaryCopyWith<RepositorySummary> get copyWith =>
       throw _privateConstructorUsedError;
@@ -35,9 +31,7 @@ abstract class $RepositorySummaryCopyWith<$Res> {
           RepositorySummary value, $Res Function(RepositorySummary) then) =
       _$RepositorySummaryCopyWithImpl<$Res, RepositorySummary>;
   @useResult
-  $Res call({String name, Owner owner});
-
-  $OwnerCopyWith<$Res> get owner;
+  $Res call({int id, String name, String ownerName});
 }
 
 /// @nodoc
@@ -53,27 +47,24 @@ class _$RepositorySummaryCopyWithImpl<$Res, $Val extends RepositorySummary>
   @pragma('vm:prefer-inline')
   @override
   $Res call({
+    Object? id = null,
     Object? name = null,
-    Object? owner = null,
+    Object? ownerName = null,
   }) {
     return _then(_value.copyWith(
+      id: null == id
+          ? _value.id
+          : id // ignore: cast_nullable_to_non_nullable
+              as int,
       name: null == name
           ? _value.name
           : name // ignore: cast_nullable_to_non_nullable
               as String,
-      owner: null == owner
-          ? _value.owner
-          : owner // ignore: cast_nullable_to_non_nullable
-              as Owner,
+      ownerName: null == ownerName
+          ? _value.ownerName
+          : ownerName // ignore: cast_nullable_to_non_nullable
+              as String,
     ) as $Val);
-  }
-
-  @override
-  @pragma('vm:prefer-inline')
-  $OwnerCopyWith<$Res> get owner {
-    return $OwnerCopyWith<$Res>(_value.owner, (value) {
-      return _then(_value.copyWith(owner: value) as $Val);
-    });
   }
 }
 
@@ -85,10 +76,7 @@ abstract class _$$_RepositorySummaryCopyWith<$Res>
       __$$_RepositorySummaryCopyWithImpl<$Res>;
   @override
   @useResult
-  $Res call({String name, Owner owner});
-
-  @override
-  $OwnerCopyWith<$Res> get owner;
+  $Res call({int id, String name, String ownerName});
 }
 
 /// @nodoc
@@ -102,49 +90,43 @@ class __$$_RepositorySummaryCopyWithImpl<$Res>
   @pragma('vm:prefer-inline')
   @override
   $Res call({
+    Object? id = null,
     Object? name = null,
-    Object? owner = null,
+    Object? ownerName = null,
   }) {
     return _then(_$_RepositorySummary(
+      id: null == id
+          ? _value.id
+          : id // ignore: cast_nullable_to_non_nullable
+              as int,
       name: null == name
           ? _value.name
           : name // ignore: cast_nullable_to_non_nullable
               as String,
-      owner: null == owner
-          ? _value.owner
-          : owner // ignore: cast_nullable_to_non_nullable
-              as Owner,
+      ownerName: null == ownerName
+          ? _value.ownerName
+          : ownerName // ignore: cast_nullable_to_non_nullable
+              as String,
     ));
   }
 }
 
 /// @nodoc
-@JsonSerializable()
-class _$_RepositorySummary
-    with DiagnosticableTreeMixin
-    implements _RepositorySummary {
-  const _$_RepositorySummary({required this.name, required this.owner});
 
-  factory _$_RepositorySummary.fromJson(Map<String, dynamic> json) =>
-      _$$_RepositorySummaryFromJson(json);
+class _$_RepositorySummary implements _RepositorySummary {
+  const _$_RepositorySummary(
+      {required this.id, required this.name, required this.ownerName});
 
+  @override
+  final int id;
   @override
   final String name;
   @override
-  final Owner owner;
+  final String ownerName;
 
   @override
-  String toString({DiagnosticLevel minLevel = DiagnosticLevel.info}) {
-    return 'RepositorySummary(name: $name, owner: $owner)';
-  }
-
-  @override
-  void debugFillProperties(DiagnosticPropertiesBuilder properties) {
-    super.debugFillProperties(properties);
-    properties
-      ..add(DiagnosticsProperty('type', 'RepositorySummary'))
-      ..add(DiagnosticsProperty('name', name))
-      ..add(DiagnosticsProperty('owner', owner));
+  String toString() {
+    return 'RepositorySummary(id: $id, name: $name, ownerName: $ownerName)';
   }
 
   @override
@@ -152,13 +134,14 @@ class _$_RepositorySummary
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$_RepositorySummary &&
+            (identical(other.id, id) || other.id == id) &&
             (identical(other.name, name) || other.name == name) &&
-            (identical(other.owner, owner) || other.owner == owner));
+            (identical(other.ownerName, ownerName) ||
+                other.ownerName == ownerName));
   }
 
-  @JsonKey(ignore: true)
   @override
-  int get hashCode => Object.hash(runtimeType, name, owner);
+  int get hashCode => Object.hash(runtimeType, id, name, ownerName);
 
   @JsonKey(ignore: true)
   @override
@@ -166,27 +149,20 @@ class _$_RepositorySummary
   _$$_RepositorySummaryCopyWith<_$_RepositorySummary> get copyWith =>
       __$$_RepositorySummaryCopyWithImpl<_$_RepositorySummary>(
           this, _$identity);
-
-  @override
-  Map<String, dynamic> toJson() {
-    return _$$_RepositorySummaryToJson(
-      this,
-    );
-  }
 }
 
 abstract class _RepositorySummary implements RepositorySummary {
   const factory _RepositorySummary(
-      {required final String name,
-      required final Owner owner}) = _$_RepositorySummary;
+      {required final int id,
+      required final String name,
+      required final String ownerName}) = _$_RepositorySummary;
 
-  factory _RepositorySummary.fromJson(Map<String, dynamic> json) =
-      _$_RepositorySummary.fromJson;
-
+  @override
+  int get id;
   @override
   String get name;
   @override
-  Owner get owner;
+  String get ownerName;
   @override
   @JsonKey(ignore: true)
   _$$_RepositorySummaryCopyWith<_$_RepositorySummary> get copyWith =>
