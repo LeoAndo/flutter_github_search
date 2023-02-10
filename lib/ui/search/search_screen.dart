@@ -11,6 +11,7 @@ import 'package:flutter_github_search/ui/components/loading_view.dart';
 import '../../domain/exception/api_exceptions.dart';
 import '../components/error_view.dart';
 import 'search_state_notifier.dart';
+import 'ui_state.dart';
 
 class SearchScreen extends ConsumerStatefulWidget {
   const SearchScreen({super.key, required this.title});
@@ -31,19 +32,19 @@ class _SearchScreenState extends ConsumerState<SearchScreen> {
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(body: _buildBody(context, ref));
+    return Scaffold(body: _buildBody(ref));
   }
 
-  Widget _buildBody(BuildContext context, WidgetRef ref) {
+  Widget _buildBody(WidgetRef ref) {
     final uiState = ref.watch(searchStateNotifierProvider);
     return uiState.when(
       loading: () {
-        return _buildBaseBody(
+        return _buildMainContent(
           child: const LoadingView(),
           onFieldSubmitted: (_) {},
         );
       },
-      initial: () => _buildBaseBody(
+      initial: () => _buildMainContent(
           child: _buildListView(
             repositories: [],
             onTap: (_) {},
@@ -53,7 +54,7 @@ class _SearchScreenState extends ConsumerState<SearchScreen> {
                 .read(searchStateNotifierProvider.notifier)
                 .searchRepositories(query: value);
           }),
-      data: (repositories) => _buildBaseBody(
+      data: (repositories) => _buildMainContent(
           child: _buildListView(
             repositories: repositories,
             onTap: (repository) {
@@ -66,7 +67,7 @@ class _SearchScreenState extends ConsumerState<SearchScreen> {
                 .searchRepositories(query: value);
           }),
       error: (ApiException e) {
-        return _buildBaseBody(
+        return _buildMainContent(
             child: ErrorView(
               message: e.message,
               onReload: () {
@@ -84,7 +85,7 @@ class _SearchScreenState extends ConsumerState<SearchScreen> {
     );
   }
 
-  Widget _buildBaseBody(
+  Widget _buildMainContent(
       {required ValueChanged<String> onFieldSubmitted, required Widget child}) {
     return SafeArea(
         child: Padding(
