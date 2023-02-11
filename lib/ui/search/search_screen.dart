@@ -3,12 +3,12 @@ import 'package:flutter/material.dart';
 
 // Package imports:
 import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:logger/logger.dart';
 
 // Project imports:
 import 'package:flutter_github_search/domain/model/repository_summary.dart';
 import 'package:flutter_github_search/ui/components/loading_view.dart';
 import 'package:flutter_github_search/ui/detail/detail_screen.dart';
-import 'package:logger/logger.dart';
 import '../../domain/exception/api_exceptions.dart';
 import '../components/error_view.dart';
 import 'search_state_notifier.dart';
@@ -22,6 +22,12 @@ class SearchScreen extends ConsumerStatefulWidget {
 
 class _SearchScreenState extends ConsumerState<SearchScreen> {
   final TextEditingController _textEditingController = TextEditingController();
+
+  @override
+  void initState() {
+    super.initState();
+    Logger().d('ando _SearchScreenState call initState');
+  }
 
   @override
   void dispose() {
@@ -65,8 +71,10 @@ class _SearchScreenState extends ConsumerState<SearchScreen> {
               Navigator.push<void>(
                 context,
                 MaterialPageRoute<void>(
-                  builder: (BuildContext context) =>
-                      DetailScreen(id: repository.id),
+                  builder: (BuildContext context) => DetailScreen(
+                    ownerName: repository.ownerName,
+                    repositoryName: repository.name,
+                  ),
                 ),
               );
             },

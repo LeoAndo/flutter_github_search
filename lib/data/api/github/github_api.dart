@@ -7,6 +7,7 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 // Project imports:
 import './response/search_repositories/search_repositories_response.dart';
 import 'github_api_http_client.dart';
+import 'response/fetch_repository_detail/repository_detail_res.dart';
 
 final Provider githubApiProvider = Provider<GithubApi>((_) {
   return GithubApi();
@@ -30,5 +31,13 @@ class GithubApi {
         .get(Uri.https(_authority, '/search/repositories', queryParameters));
     final json = convert.jsonDecode(response.body) as Map<String, dynamic>;
     return SearchRepositoriesResponse.fromJson(json);
+  }
+
+  Future<RepositoryDetailRes> fetchRepositoryDetail(
+      {required String ownerName, required String repositoryName}) async {
+    final response = await client
+        .get(Uri.https(_authority, '/repos/$ownerName/$repositoryName'));
+    final json = convert.jsonDecode(response.body) as Map<String, dynamic>;
+    return RepositoryDetailRes.fromJson(json);
   }
 }

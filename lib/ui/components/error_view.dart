@@ -14,21 +14,17 @@ class ErrorView extends StatelessWidget {
         .bodyLarge!
         .copyWith(color: Theme.of(context).colorScheme.error);
 
-    return Expanded(
-      child: SizedBox(
-        width: double.infinity,
-        height: double.infinity,
-        child: Column(
-          mainAxisAlignment: MainAxisAlignment.center,
-          children: [
-            Text(message, style: styleText),
-            const SizedBox(height: 16),
-            ElevatedButton.icon(
-                onPressed: onReload,
-                icon: const Icon(Icons.error_outline),
-                label: const Text('reload'))
-          ],
-        ),
+    return Center(
+      child: Column(
+        mainAxisAlignment: MainAxisAlignment.center,
+        children: [
+          Text(message, style: styleText),
+          const SizedBox(height: 16),
+          ElevatedButton.icon(
+              onPressed: onReload,
+              icon: const Icon(Icons.error_outline),
+              label: const Text('reload'))
+        ],
       ),
     );
   }
