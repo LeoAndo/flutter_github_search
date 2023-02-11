@@ -7,10 +7,10 @@ import 'package:logger/logger.dart';
 
 // Project imports:
 import 'package:flutter_github_search/domain/model/repository_summary.dart';
-import 'package:flutter_github_search/ui/components/loading_view.dart';
 import 'package:flutter_github_search/ui/detail/detail_screen.dart';
 import '../../domain/exception/api_exceptions.dart';
-import '../components/error_view.dart';
+import '../components/app_error.dart';
+import '../components/app_loading.dart';
 import 'search_state_notifier.dart';
 
 class SearchScreen extends ConsumerStatefulWidget {
@@ -50,7 +50,7 @@ class _SearchScreenState extends ConsumerState<SearchScreen> {
     return uiState.when(
       loading: () {
         return _buildMainContent(
-          child: const LoadingView(),
+          child: const AppLoading(),
           onFieldSubmitted: (_) {},
         );
       },
@@ -86,7 +86,7 @@ class _SearchScreenState extends ConsumerState<SearchScreen> {
           }),
       error: (ApiException e) {
         return _buildMainContent(
-            child: ErrorView(
+            child: AppError(
               message: e.message,
               onReload: () {
                 ref

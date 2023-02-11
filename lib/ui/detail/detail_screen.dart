@@ -8,10 +8,10 @@ import 'package:logger/logger.dart';
 // Project imports:
 import '../../domain/exception/api_exceptions.dart';
 import '../../domain/model/repository_detail.dart';
-import '../../ui/components/error_view.dart';
-import '../../ui/components/loading_view.dart';
 import '../../ui/detail/detail_state_notifier.dart';
-import '../components/network_image.dart' as image;
+import '../components/app_error.dart';
+import '../components/app_loading.dart';
+import '../components/app_network_image.dart';
 
 class DetailScreen extends ConsumerStatefulWidget {
   final String ownerName;
@@ -57,7 +57,7 @@ class _DetailScreenState extends ConsumerState<DetailScreen> {
 
     return uiState.when(
         data: (data) => _buildDataBody(data),
-        error: (ApiException e) => ErrorView(
+        error: (ApiException e) => AppError(
             message: e.message,
             onReload: () => {
                   ref
@@ -67,7 +67,7 @@ class _DetailScreenState extends ConsumerState<DetailScreen> {
                           repositoryName: widget.repositoryName)
                 }),
         initial: () => Container(),
-        loading: () => const LoadingView());
+        loading: () => const AppLoading());
   }
 
   Widget _buildDataBody(RepositoryDetail repositoryDetail) {
@@ -97,8 +97,8 @@ class _DetailScreenState extends ConsumerState<DetailScreen> {
           repositoryDetail.language ?? '',
         ),
         const SizedBox(height: 40),
-        _buildIconWithText(
-            const Icon(Icons.copy), '${repositoryDetail.forksCount} forks'),
+        _buildIconWithText(const Icon(Icons.flutter_dash),
+            '${repositoryDetail.forksCount} forks'),
         const SizedBox(height: 16),
         _buildIconWithText(const Icon(Icons.star),
             '${repositoryDetail.stargazersCount} stars'),
@@ -106,7 +106,7 @@ class _DetailScreenState extends ConsumerState<DetailScreen> {
         _buildIconWithText(const Icon(Icons.remove_red_eye),
             '${repositoryDetail.watchersCount} watchers'),
         const SizedBox(height: 16),
-        _buildIconWithText(const Icon(Icons.remove_circle_sharp),
+        _buildIconWithText(const Icon(Icons.task),
             'open ${repositoryDetail.openIssuesCount} issues'),
       ],
     );
@@ -132,7 +132,7 @@ class _DetailScreenState extends ConsumerState<DetailScreen> {
     );
     return FractionallySizedBox(
       widthFactor: imageWidthFactor,
-      child: image.NetworkImage(
+      child: AppNetworkImage(
         imageUrl: imageUrl,
         placeholder: placeholder,
       ),

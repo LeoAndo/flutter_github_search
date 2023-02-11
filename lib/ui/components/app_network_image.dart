@@ -4,8 +4,8 @@ import 'package:flutter/material.dart';
 // Package imports:
 import 'package:cached_network_image/cached_network_image.dart';
 
-class NetworkImage extends StatelessWidget {
-  const NetworkImage({
+class AppNetworkImage extends StatelessWidget {
+  const AppNetworkImage({
     Key? key,
     required this.imageUrl,
     required this.placeholder,

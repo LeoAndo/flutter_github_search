@@ -1,11 +1,11 @@
 // Flutter imports:
 import 'package:flutter/material.dart';
 
-class ErrorView extends StatelessWidget {
+class AppError extends StatelessWidget {
   final String message;
   final VoidCallback onReload;
 
-  const ErrorView({super.key, required this.message, required this.onReload});
+  const AppError({super.key, required this.message, required this.onReload});
 
   @override
   Widget build(BuildContext context) {
