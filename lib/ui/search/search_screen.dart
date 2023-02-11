@@ -8,13 +8,13 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:flutter_github_search/domain/model/repository_summary.dart';
 import 'package:flutter_github_search/ui/components/loading_view.dart';
 import 'package:flutter_github_search/ui/detail/detail_screen.dart';
+import 'package:logger/logger.dart';
 import '../../domain/exception/api_exceptions.dart';
 import '../components/error_view.dart';
 import 'search_state_notifier.dart';
 
 class SearchScreen extends ConsumerStatefulWidget {
-  const SearchScreen({super.key, required this.title});
-  final String title;
+  const SearchScreen({super.key});
 
   @override
   ConsumerState<ConsumerStatefulWidget> createState() => _SearchScreenState();
@@ -26,12 +26,17 @@ class _SearchScreenState extends ConsumerState<SearchScreen> {
   @override
   void dispose() {
     super.dispose();
+    Logger().d('ando _SearchScreenState call dispose');
     _textEditingController.dispose();
   }
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(body: _buildBody(ref));
+    return Scaffold(
+        appBar: AppBar(
+          title: const Text('Search Screen'),
+        ),
+        body: _buildBody(ref));
   }
 
   Widget _buildBody(WidgetRef ref) {
@@ -133,6 +138,7 @@ class _SearchScreenState extends ConsumerState<SearchScreen> {
                           contentPadding: const EdgeInsets.all(8),
                         )),
                   );
-                }));
+                }),
+          );
   }
 }

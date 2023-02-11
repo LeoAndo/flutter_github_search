@@ -3,10 +3,10 @@ import 'package:flutter/material.dart';
 
 // Package imports:
 import 'package:dynamic_color/dynamic_color.dart';
+import 'package:flutter_github_search/ui/home/home_screen.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
 // Project imports:
-import 'package:flutter_github_search/ui/search/search_screen.dart';
 import 'ui/theme/color_schemes.dart';
 import 'ui/theme/custom_color.dart';
 
@@ -51,7 +51,7 @@ class MyApp extends StatelessWidget {
             colorScheme: darkScheme,
             extensions: [darkCustomColors],
           ),
-          home: const SearchScreen(title: 'Home Page'),
+          home: const HomeScreen(title: 'Github Search App'),
         );
       },
     );
