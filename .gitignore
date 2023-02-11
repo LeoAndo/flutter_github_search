@@ -131,3 +131,8 @@ app.*.symbols
 
 # fvm
 .fvm/flutter_sdk
+
+# ローカル環境 (Makeコマンドで作成するgit管理対象外のファイル)
+analyze_result.txt
+format_result.txt
+test_result.txt
