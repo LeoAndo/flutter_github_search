@@ -42,6 +42,8 @@ class SearchPagingScreen extends StatefulWidget {
 
 class _SearchPagingScreenState extends State<SearchPagingScreen> {
   static const _pageSize = 20;
+  // PagedListViewがbuildされたタイミングですぐにfirstPageProgressIndicatorBuilderが走るため、buildタイミングをずらすフラグを用意
+  // フォームの入力値(query)で検索処理を行うため、初期表示時には走らせたくない。
   bool _isBuildListView = false;
   final TextEditingController _textEditingController = TextEditingController();
 
