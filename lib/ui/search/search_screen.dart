@@ -49,12 +49,13 @@ class _SearchScreenState extends ConsumerState<SearchScreen> {
     final uiState = ref.watch(searchStateNotifierProvider);
     return uiState.when(
       loading: () {
-        return _buildMainContent(
-          child: const AppLoading(),
-          onFieldSubmitted: (_) {},
+        return AppLoading(
+          mainWidget: _buildMainWidget(
+            onFieldSubmitted: (_) {},
+          ),
         );
       },
-      initial: () => _buildMainContent(
+      initial: () => _buildMainWidget(
           child: _buildListView(
             repositories: [],
             onTap: (_) {},
@@ -64,7 +65,7 @@ class _SearchScreenState extends ConsumerState<SearchScreen> {
                 .read(searchStateNotifierProvider.notifier)
                 .searchRepositories(query: value);
           }),
-      data: (repositories) => _buildMainContent(
+      data: (repositories) => _buildMainWidget(
           child: _buildListView(
             repositories: repositories,
             onTap: (repository) {
@@ -85,26 +86,25 @@ class _SearchScreenState extends ConsumerState<SearchScreen> {
                 .searchRepositories(query: value);
           }),
       error: (ApiException e) {
-        return _buildMainContent(
-            child: AppError(
-              message: e.message,
-              onReload: () {
-                ref
-                    .read(searchStateNotifierProvider.notifier)
-                    .searchRepositories(query: _textEditingController.text);
-              },
-            ),
-            onFieldSubmitted: (String value) {
-              ref
-                  .read(searchStateNotifierProvider.notifier)
-                  .searchRepositories(query: value);
-            });
+        return AppError(
+          message: e.message,
+          onReload: () {
+            ref
+                .read(searchStateNotifierProvider.notifier)
+                .searchRepositories(query: _textEditingController.text);
+          },
+          mainWidget: _buildMainWidget(onFieldSubmitted: (String value) {
+            ref
+                .read(searchStateNotifierProvider.notifier)
+                .searchRepositories(query: value);
+          }),
+        );
       },
     );
   }
 
-  Widget _buildMainContent(
-      {required ValueChanged<String> onFieldSubmitted, required Widget child}) {
+  Widget _buildMainWidget(
+      {required ValueChanged<String> onFieldSubmitted, Widget? child}) {
     return SafeArea(
         child: Padding(
       padding: const EdgeInsets.all(16),
@@ -120,7 +120,7 @@ class _SearchScreenState extends ConsumerState<SearchScreen> {
               labelText: 'search keyword repo name',
             ),
           ),
-          child,
+          if (child != null) child,
         ],
       ),
     ));

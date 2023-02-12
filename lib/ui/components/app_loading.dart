@@ -2,9 +2,17 @@
 import 'package:flutter/material.dart';
 
 class AppLoading extends StatelessWidget {
-  const AppLoading({super.key});
+  const AppLoading({super.key, this.mainWidget});
+  final Widget? mainWidget;
   @override
   Widget build(BuildContext context) {
-    return const Center(child: CircularProgressIndicator());
+    // 画面中央にローディングを表示したいため、Stackで囲っている.
+    // StackはAndroidでいうFrameLayout的なイメージで使っている.
+    return Stack(
+      children: [
+        if (mainWidget != null) mainWidget!,
+        const Center(child: CircularProgressIndicator()),
+      ],
+    );
   }
 }

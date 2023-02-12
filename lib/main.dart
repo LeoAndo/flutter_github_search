@@ -8,7 +8,7 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 // Project imports:
 import 'package:flutter_github_search/ui/home/home_screen.dart';
 import 'ui/theme/color_schemes.dart';
-import 'ui/theme/custom_color.dart';
+import 'ui/theme/custom_colors.dart';
 
 void main() {
   runApp(const ProviderScope(child: MyApp()));

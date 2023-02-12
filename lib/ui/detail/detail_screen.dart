@@ -1,8 +1,8 @@
 // Flutter imports:
 import 'package:flutter/material.dart';
+import 'package:flutter_riverpod/flutter_riverpod.dart';
 
 // Package imports:
-import 'package:hooks_riverpod/hooks_riverpod.dart';
 import 'package:logger/logger.dart';
 
 // Project imports:
@@ -56,68 +56,63 @@ class _DetailScreenState extends ConsumerState<DetailScreen> {
     });
 
     return uiState.when(
-        data: (data) => _buildDataBody(data),
-        error: (ApiException e) => AppError(
-            message: e.message,
-            onReload: () => {
-                  ref
-                      .read(detailStateNotifierProvider.notifier)
-                      .fetchRepositoryDetail(
-                          ownerName: widget.ownerName,
-                          repositoryName: widget.repositoryName)
-                }),
-        initial: () => Container(),
-        loading: () => const AppLoading());
-  }
-
-  Widget _buildDataBody(RepositoryDetail repositoryDetail) {
-    return _buildDataColumn(
-      children: [
-        _buildOwnerImage(repositoryDetail.ownerAvatarUrl),
-        const SizedBox(height: 16),
-        Text(
-          repositoryDetail.name,
-          style: Theme.of(context).textTheme.headlineLarge,
-          maxLines: 1,
-          overflow: TextOverflow.ellipsis,
-        ),
-        const SizedBox(height: 16),
-        Text(
-          widget.ownerName,
-          style: Theme.of(context).textTheme.headlineMedium,
-          maxLines: 1,
-          overflow: TextOverflow.ellipsis,
-        ),
-        const SizedBox(height: 16),
-        Text(
-          repositoryDetail.description ?? '',
-        ),
-        const SizedBox(height: 16),
-        Text(
-          repositoryDetail.language ?? '',
-        ),
-        const SizedBox(height: 40),
-        _buildIconWithText(const Icon(Icons.flutter_dash),
-            '${repositoryDetail.forksCount} forks'),
-        const SizedBox(height: 16),
-        _buildIconWithText(const Icon(Icons.star),
-            '${repositoryDetail.stargazersCount} stars'),
-        const SizedBox(height: 16),
-        _buildIconWithText(const Icon(Icons.remove_red_eye),
-            '${repositoryDetail.watchersCount} watchers'),
-        const SizedBox(height: 16),
-        _buildIconWithText(const Icon(Icons.task),
-            'open ${repositoryDetail.openIssuesCount} issues'),
-      ],
+      initial: () => Container(),
+      loading: () => const AppLoading(),
+      data: (data) => _buildDataBody(data),
+      error: (ApiException e) => AppError(
+          message: e.message,
+          onReload: () => {
+                ref
+                    .read(detailStateNotifierProvider.notifier)
+                    .fetchRepositoryDetail(
+                        ownerName: widget.ownerName,
+                        repositoryName: widget.repositoryName)
+              }),
     );
   }
 
-  Widget _buildDataColumn({required List<Widget> children}) {
+  Widget _buildDataBody(RepositoryDetail repositoryDetail) {
     return Center(
       child: SingleChildScrollView(
         padding: const EdgeInsets.all(16),
         child: Column(
-          children: children,
+          children: [
+            _buildOwnerImage(repositoryDetail.ownerAvatarUrl),
+            const SizedBox(height: 16),
+            Text(
+              repositoryDetail.name,
+              style: Theme.of(context).textTheme.headlineLarge,
+              maxLines: 1,
+              overflow: TextOverflow.ellipsis,
+            ),
+            const SizedBox(height: 16),
+            Text(
+              widget.ownerName,
+              style: Theme.of(context).textTheme.headlineMedium,
+              maxLines: 1,
+              overflow: TextOverflow.ellipsis,
+            ),
+            const SizedBox(height: 16),
+            Text(
+              repositoryDetail.description ?? '',
+            ),
+            const SizedBox(height: 16),
+            Text(
+              repositoryDetail.language ?? '',
+            ),
+            const SizedBox(height: 40),
+            _buildIconWithText(const Icon(Icons.flutter_dash),
+                '${repositoryDetail.forksCount} forks'),
+            const SizedBox(height: 16),
+            _buildIconWithText(const Icon(Icons.star),
+                '${repositoryDetail.stargazersCount} stars'),
+            const SizedBox(height: 16),
+            _buildIconWithText(const Icon(Icons.remove_red_eye),
+                '${repositoryDetail.watchersCount} watchers'),
+            const SizedBox(height: 16),
+            _buildIconWithText(const Icon(Icons.task),
+                'open ${repositoryDetail.openIssuesCount} issues'),
+          ],
         ),
       ),
     );
@@ -130,11 +125,16 @@ class _DetailScreenState extends ConsumerState<DetailScreen> {
       Icons.person,
       size: size.width * imageWidthFactor,
     );
+    final errorWidget = Icon(
+      Icons.error_outline,
+      size: size.width * imageWidthFactor,
+    );
     return FractionallySizedBox(
       widthFactor: imageWidthFactor,
       child: AppNetworkImage(
         imageUrl: imageUrl,
         placeholder: placeholder,
+        errorWidget: errorWidget,
       ),
     );
   }
