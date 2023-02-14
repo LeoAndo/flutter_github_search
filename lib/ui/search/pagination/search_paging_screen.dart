@@ -48,15 +48,17 @@ class _SearchPagingScreenState extends ConsumerState<SearchPagingScreen> {
   Widget _buildBody() {
     final uiState = ref.watch(searchPagingStateNotifierProvider);
     return uiState.when(
-      loading: (repositories, isLastPage, nextPageNo) {
+      loading: (_, nextPageNo) {
         return _buildMainWidget(
-            child: _buildListView(
-              uiState: uiState,
-              onTap: (repository) {},
-            ),
-            onFieldSubmitted: (String value) {});
+          child: _buildListView(
+            uiState: uiState,
+            onTap: (_) {},
+          ),
+          onFieldSubmitted: (_) {},
+          uiState: uiState,
+        );
       },
-      initial: (repositories, isLastPage, nextPageNo) => _buildMainWidget(
+      initial: (_, nextPageNo) => _buildMainWidget(
           child: _buildListView(
             uiState: uiState,
             onTap: (_) {},
@@ -66,8 +68,33 @@ class _SearchPagingScreenState extends ConsumerState<SearchPagingScreen> {
                 .read(searchPagingStateNotifierProvider.notifier)
                 .searchRepositories(
                     query: value, page: nextPageNo, refresh: true);
-          }),
-      data: (repositories, isLastPage, nextPageNo) => _buildMainWidget(
+          },
+          uiState: uiState),
+      data: (_, nextPageNo) => _buildMainWidget(
+        child: _buildListView(
+          uiState: uiState,
+          onTap: (repository) {
+            Navigator.push(
+              context,
+              MaterialPageRoute(
+                builder: (_) => DetailScreen(
+                  ownerName: repository.ownerName,
+                  repositoryName: repository.name,
+                ),
+              ),
+            );
+          },
+        ),
+        onFieldSubmitted: (String value) {
+          ref
+              .read(searchPagingStateNotifierProvider.notifier)
+              .searchRepositories(
+                  query: value, page: nextPageNo ?? 1, refresh: true);
+        },
+        uiState: uiState,
+      ),
+      error: (_, nextPageNo, e) {
+        return _buildMainWidget(
           child: _buildListView(
             uiState: uiState,
             onTap: (repository) {
@@ -81,68 +108,78 @@ class _SearchPagingScreenState extends ConsumerState<SearchPagingScreen> {
                 ),
               );
             },
+            errorMessage: e.message,
           ),
           onFieldSubmitted: (String value) {
             ref
                 .read(searchPagingStateNotifierProvider.notifier)
                 .searchRepositories(
                     query: value, page: nextPageNo ?? 1, refresh: true);
-          }),
-      error: (repositories, isLastPage, nextPageNo, e) {
-        return _buildMainWidget(
-            child: _buildListView(
-              uiState: uiState,
-              onTap: (repository) {
-                Navigator.push(
-                  context,
-                  MaterialPageRoute(
-                    builder: (_) => DetailScreen(
-                      ownerName: repository.ownerName,
-                      repositoryName: repository.name,
-                    ),
-                  ),
-                );
-              },
-            ),
-            onFieldSubmitted: (String value) {
-              ref
-                  .read(searchPagingStateNotifierProvider.notifier)
-                  .searchRepositories(
-                      query: value, page: nextPageNo ?? 1, refresh: true);
-            });
+          },
+          uiState: uiState,
+          errorMessage: e.message,
+        );
       },
     );
   }
 
-  Widget _buildMainWidget(
-      {required ValueChanged<String> onFieldSubmitted, Widget? child}) {
+  Widget _buildMainWidget({
+    required ValueChanged<String> onFieldSubmitted,
+    required UiState uiState,
+    Widget? child,
+    String? errorMessage,
+  }) {
+    final message =
+        'Please check the communication environment and overscroll again or ReSearch. $errorMessage';
     return SafeArea(
         child: Padding(
-      padding: const EdgeInsets.all(16),
-      child: Column(
-        children: <Widget>[
-          TextFormField(
-            controller: _textEditingController,
-            onFieldSubmitted: (value) {
-              onFieldSubmitted(value);
-            },
-            decoration: const InputDecoration(
-              border: OutlineInputBorder(),
-              labelText: 'search keyword repo name',
-            ),
-          ),
-          if (child != null) child,
-        ],
-      ),
-    ));
+            padding: const EdgeInsets.all(16),
+            child: Stack(
+              children: [
+                Column(
+                  children: <Widget>[
+                    TextFormField(
+                      controller: _textEditingController,
+                      onFieldSubmitted: (value) {
+                        onFieldSubmitted(value);
+                      },
+                      decoration: const InputDecoration(
+                        border: OutlineInputBorder(),
+                        labelText: 'search keyword repo name',
+                      ),
+                    ),
+                    if (child != null) child,
+                    if (uiState is Error)
+                      Text(
+                        message,
+                        style: TextStyle(
+                            color: Theme.of(context).colorScheme.error),
+                      )
+                  ],
+                ),
+                Center(
+                  child: Column(
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    children: [
+                      if (uiState is Loading) const CircularProgressIndicator(),
+                    ],
+                  ),
+                )
+              ],
+            )));
   }
 
   Widget _buildListView({
     required Function(RepositorySummary repository) onTap,
     required UiState uiState,
+    String? errorMessage,
   }) {
     return uiState.repositories.isEmpty
-        ? Container()
+        ? (uiState is Data)
+            ? const Center(
+                child: Text('result empty..'),
+              )
+            : Container()
         : NotificationListener<ScrollNotification>(
             child: Expanded(
               child: ListView.builder(
@@ -154,7 +191,6 @@ class _SearchPagingScreenState extends ConsumerState<SearchPagingScreen> {
                       child: InkWell(
                           onTap: () => onTap(repository),
                           child: ListTile(
-                            leading: Text('$index'),
                             title: Text(repository.ownerName),
                             subtitle: Text(repository.name),
                             contentPadding: const EdgeInsets.all(8),
@@ -166,13 +202,9 @@ class _SearchPagingScreenState extends ConsumerState<SearchPagingScreen> {
               if (notification is OverscrollNotification) {
                 if (uiState is Loading) {
                 } else {
-                  Logger().d(
-                      'ando is not Loading nextPageNo: ${uiState.nextPageNo}');
                   if (notification.overscroll > 0 &&
                       uiState.nextPageNo != null) {
-                    // 下端のオーバースクロール && 次ページがある場合
-                    //  検索APIを叩く.
-                    Logger().d('ando 次ページを取得する. ${uiState.nextPageNo}');
+                    // 下端のオーバースクロール && 次ページがある場合のみ検索APIを叩く.
                     ref
                         .read(searchPagingStateNotifierProvider.notifier)
                         .searchRepositories(

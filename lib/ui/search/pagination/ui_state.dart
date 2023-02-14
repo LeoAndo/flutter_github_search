@@ -14,20 +14,16 @@ part 'ui_state.freezed.dart';
 @freezed
 class UiState with _$UiState {
   const factory UiState.initial(
-      {required List<RepositorySummary> repositories,
-      required bool isLastPage,
+      {@Default([]) List<RepositorySummary> repositories,
       @Default(1) int nextPageNo}) = Initial;
   const factory UiState.loading(
       {required List<RepositorySummary> repositories,
-      required bool isLastPage,
       required int? nextPageNo}) = Loading;
   const factory UiState.data(
       {required List<RepositorySummary> repositories,
-      required bool isLastPage,
       required int? nextPageNo}) = Data;
   const factory UiState.error(
       {required List<RepositorySummary> repositories,
-      required bool isLastPage,
       required int? nextPageNo,
       required ApplicationException exception}) = Error;
 }

@@ -20,8 +20,7 @@ final searchPagingStateNotifierProvider =
 });
 
 class SearchPagingStateNotifier extends StateNotifier<UiState> {
-  SearchPagingStateNotifier(this._repository)
-      : super(const UiState.initial(repositories: [], isLastPage: false));
+  SearchPagingStateNotifier(this._repository) : super(const UiState.initial());
   final GithubRepoRepository _repository;
 
   void searchRepositories(
@@ -34,29 +33,22 @@ class SearchPagingStateNotifier extends StateNotifier<UiState> {
         throw const InputValidationException("please input search word.");
       }
       state = UiState.loading(
-          repositories: repositories,
-          isLastPage: state.isLastPage,
-          nextPageNo: state.nextPageNo);
+          repositories: repositories, nextPageNo: state.nextPageNo);
 
       final newItems =
           await _repository.searchRepositories(query: query, page: page);
       final isLastPage = newItems.length < GithubApi.perPage;
       if (isLastPage) {
         state = UiState.data(
-            repositories: repositories + newItems,
-            isLastPage: isLastPage,
-            nextPageNo: null);
+            repositories: repositories + newItems, nextPageNo: null);
       } else {
         page++;
         state = UiState.data(
-            repositories: repositories + newItems,
-            isLastPage: isLastPage,
-            nextPageNo: page);
+            repositories: repositories + newItems, nextPageNo: page);
       }
     } on ApplicationException catch (e) {
       state = UiState.error(
           repositories: repositories,
-          isLastPage: state.isLastPage,
           nextPageNo: state.nextPageNo,
           exception: e);
     }

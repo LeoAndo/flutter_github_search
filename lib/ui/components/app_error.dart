@@ -12,7 +12,7 @@ class AppError extends StatelessWidget {
       required this.message,
       required this.onReload,
       this.mainWidget,
-      this.padding = const EdgeInsets.all(8)});
+      this.padding = const EdgeInsets.all(0)});
 
   @override
   Widget build(BuildContext context) {
@@ -28,8 +28,8 @@ class AppError extends StatelessWidget {
                 Text(
                   message,
                   style: TextStyle(color: Theme.of(context).colorScheme.error),
-                  maxLines: 3,
-                  overflow: TextOverflow.ellipsis,
+                  // maxLines: 3,
+                  // overflow: TextOverflow.ellipsis,
                 ),
                 const SizedBox(height: 16),
                 ElevatedButton.icon(

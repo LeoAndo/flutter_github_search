@@ -18,53 +18,46 @@ final _privateConstructorUsedError = UnsupportedError(
 mixin _$UiState {
   List<RepositorySummary> get repositories =>
       throw _privateConstructorUsedError;
-  bool get isLastPage => throw _privateConstructorUsedError;
   int? get nextPageNo => throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function(List<RepositorySummary> repositories,
-            bool isLastPage, int nextPageNo)
+    required TResult Function(
+            List<RepositorySummary> repositories, int nextPageNo)
         initial,
-    required TResult Function(List<RepositorySummary> repositories,
-            bool isLastPage, int? nextPageNo)
+    required TResult Function(
+            List<RepositorySummary> repositories, int? nextPageNo)
         loading,
-    required TResult Function(List<RepositorySummary> repositories,
-            bool isLastPage, int? nextPageNo)
+    required TResult Function(
+            List<RepositorySummary> repositories, int? nextPageNo)
         data,
     required TResult Function(List<RepositorySummary> repositories,
-            bool isLastPage, int? nextPageNo, ApplicationException exception)
+            int? nextPageNo, ApplicationException exception)
         error,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function(List<RepositorySummary> repositories, bool isLastPage,
-            int nextPageNo)?
+    TResult? Function(List<RepositorySummary> repositories, int nextPageNo)?
         initial,
-    TResult? Function(List<RepositorySummary> repositories, bool isLastPage,
-            int? nextPageNo)?
+    TResult? Function(List<RepositorySummary> repositories, int? nextPageNo)?
         loading,
-    TResult? Function(List<RepositorySummary> repositories, bool isLastPage,
-            int? nextPageNo)?
+    TResult? Function(List<RepositorySummary> repositories, int? nextPageNo)?
         data,
-    TResult? Function(List<RepositorySummary> repositories, bool isLastPage,
-            int? nextPageNo, ApplicationException exception)?
+    TResult? Function(List<RepositorySummary> repositories, int? nextPageNo,
+            ApplicationException exception)?
         error,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function(List<RepositorySummary> repositories, bool isLastPage,
-            int nextPageNo)?
+    TResult Function(List<RepositorySummary> repositories, int nextPageNo)?
         initial,
-    TResult Function(List<RepositorySummary> repositories, bool isLastPage,
-            int? nextPageNo)?
+    TResult Function(List<RepositorySummary> repositories, int? nextPageNo)?
         loading,
-    TResult Function(List<RepositorySummary> repositories, bool isLastPage,
-            int? nextPageNo)?
+    TResult Function(List<RepositorySummary> repositories, int? nextPageNo)?
         data,
-    TResult Function(List<RepositorySummary> repositories, bool isLastPage,
-            int? nextPageNo, ApplicationException exception)?
+    TResult Function(List<RepositorySummary> repositories, int? nextPageNo,
+            ApplicationException exception)?
         error,
     required TResult orElse(),
   }) =>
@@ -104,8 +97,7 @@ abstract class $UiStateCopyWith<$Res> {
   factory $UiStateCopyWith(UiState value, $Res Function(UiState) then) =
       _$UiStateCopyWithImpl<$Res, UiState>;
   @useResult
-  $Res call(
-      {List<RepositorySummary> repositories, bool isLastPage, int nextPageNo});
+  $Res call({List<RepositorySummary> repositories, int nextPageNo});
 }
 
 /// @nodoc
@@ -122,7 +114,6 @@ class _$UiStateCopyWithImpl<$Res, $Val extends UiState>
   @override
   $Res call({
     Object? repositories = null,
-    Object? isLastPage = null,
     Object? nextPageNo = null,
   }) {
     return _then(_value.copyWith(
@@ -130,10 +121,6 @@ class _$UiStateCopyWithImpl<$Res, $Val extends UiState>
           ? _value.repositories
           : repositories // ignore: cast_nullable_to_non_nullable
               as List<RepositorySummary>,
-      isLastPage: null == isLastPage
-          ? _value.isLastPage
-          : isLastPage // ignore: cast_nullable_to_non_nullable
-              as bool,
       nextPageNo: null == nextPageNo
           ? _value.nextPageNo!
           : nextPageNo // ignore: cast_nullable_to_non_nullable
@@ -148,8 +135,7 @@ abstract class _$$InitialCopyWith<$Res> implements $UiStateCopyWith<$Res> {
       __$$InitialCopyWithImpl<$Res>;
   @override
   @useResult
-  $Res call(
-      {List<RepositorySummary> repositories, bool isLastPage, int nextPageNo});
+  $Res call({List<RepositorySummary> repositories, int nextPageNo});
 }
 
 /// @nodoc
@@ -163,7 +149,6 @@ class __$$InitialCopyWithImpl<$Res>
   @override
   $Res call({
     Object? repositories = null,
-    Object? isLastPage = null,
     Object? nextPageNo = null,
   }) {
     return _then(_$Initial(
@@ -171,10 +156,6 @@ class __$$InitialCopyWithImpl<$Res>
           ? _value._repositories
           : repositories // ignore: cast_nullable_to_non_nullable
               as List<RepositorySummary>,
-      isLastPage: null == isLastPage
-          ? _value.isLastPage
-          : isLastPage // ignore: cast_nullable_to_non_nullable
-              as bool,
       nextPageNo: null == nextPageNo
           ? _value.nextPageNo
           : nextPageNo // ignore: cast_nullable_to_non_nullable
@@ -187,13 +168,13 @@ class __$$InitialCopyWithImpl<$Res>
 
 class _$Initial with DiagnosticableTreeMixin implements Initial {
   const _$Initial(
-      {required final List<RepositorySummary> repositories,
-      required this.isLastPage,
+      {final List<RepositorySummary> repositories = const [],
       this.nextPageNo = 1})
       : _repositories = repositories;
 
   final List<RepositorySummary> _repositories;
   @override
+  @JsonKey()
   List<RepositorySummary> get repositories {
     if (_repositories is EqualUnmodifiableListView) return _repositories;
     // ignore: implicit_dynamic_type
@@ -201,14 +182,12 @@ class _$Initial with DiagnosticableTreeMixin implements Initial {
   }
 
   @override
-  final bool isLastPage;
-  @override
   @JsonKey()
   final int nextPageNo;
 
   @override
   String toString({DiagnosticLevel minLevel = DiagnosticLevel.info}) {
-    return 'UiState.initial(repositories: $repositories, isLastPage: $isLastPage, nextPageNo: $nextPageNo)';
+    return 'UiState.initial(repositories: $repositories, nextPageNo: $nextPageNo)';
   }
 
   @override
@@ -217,7 +196,6 @@ class _$Initial with DiagnosticableTreeMixin implements Initial {
     properties
       ..add(DiagnosticsProperty('type', 'UiState.initial'))
       ..add(DiagnosticsProperty('repositories', repositories))
-      ..add(DiagnosticsProperty('isLastPage', isLastPage))
       ..add(DiagnosticsProperty('nextPageNo', nextPageNo));
   }
 
@@ -228,18 +206,13 @@ class _$Initial with DiagnosticableTreeMixin implements Initial {
             other is _$Initial &&
             const DeepCollectionEquality()
                 .equals(other._repositories, _repositories) &&
-            (identical(other.isLastPage, isLastPage) ||
-                other.isLastPage == isLastPage) &&
             (identical(other.nextPageNo, nextPageNo) ||
                 other.nextPageNo == nextPageNo));
   }
 
   @override
-  int get hashCode => Object.hash(
-      runtimeType,
-      const DeepCollectionEquality().hash(_repositories),
-      isLastPage,
-      nextPageNo);
+  int get hashCode => Object.hash(runtimeType,
+      const DeepCollectionEquality().hash(_repositories), nextPageNo);
 
   @JsonKey(ignore: true)
   @override
@@ -250,60 +223,54 @@ class _$Initial with DiagnosticableTreeMixin implements Initial {
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function(List<RepositorySummary> repositories,
-            bool isLastPage, int nextPageNo)
+    required TResult Function(
+            List<RepositorySummary> repositories, int nextPageNo)
         initial,
-    required TResult Function(List<RepositorySummary> repositories,
-            bool isLastPage, int? nextPageNo)
+    required TResult Function(
+            List<RepositorySummary> repositories, int? nextPageNo)
         loading,
-    required TResult Function(List<RepositorySummary> repositories,
-            bool isLastPage, int? nextPageNo)
+    required TResult Function(
+            List<RepositorySummary> repositories, int? nextPageNo)
         data,
     required TResult Function(List<RepositorySummary> repositories,
-            bool isLastPage, int? nextPageNo, ApplicationException exception)
+            int? nextPageNo, ApplicationException exception)
         error,
   }) {
-    return initial(repositories, isLastPage, nextPageNo);
+    return initial(repositories, nextPageNo);
   }
 
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function(List<RepositorySummary> repositories, bool isLastPage,
-            int nextPageNo)?
+    TResult? Function(List<RepositorySummary> repositories, int nextPageNo)?
         initial,
-    TResult? Function(List<RepositorySummary> repositories, bool isLastPage,
-            int? nextPageNo)?
+    TResult? Function(List<RepositorySummary> repositories, int? nextPageNo)?
         loading,
-    TResult? Function(List<RepositorySummary> repositories, bool isLastPage,
-            int? nextPageNo)?
+    TResult? Function(List<RepositorySummary> repositories, int? nextPageNo)?
         data,
-    TResult? Function(List<RepositorySummary> repositories, bool isLastPage,
-            int? nextPageNo, ApplicationException exception)?
+    TResult? Function(List<RepositorySummary> repositories, int? nextPageNo,
+            ApplicationException exception)?
         error,
   }) {
-    return initial?.call(repositories, isLastPage, nextPageNo);
+    return initial?.call(repositories, nextPageNo);
   }
 
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function(List<RepositorySummary> repositories, bool isLastPage,
-            int nextPageNo)?
+    TResult Function(List<RepositorySummary> repositories, int nextPageNo)?
         initial,
-    TResult Function(List<RepositorySummary> repositories, bool isLastPage,
-            int? nextPageNo)?
+    TResult Function(List<RepositorySummary> repositories, int? nextPageNo)?
         loading,
-    TResult Function(List<RepositorySummary> repositories, bool isLastPage,
-            int? nextPageNo)?
+    TResult Function(List<RepositorySummary> repositories, int? nextPageNo)?
         data,
-    TResult Function(List<RepositorySummary> repositories, bool isLastPage,
-            int? nextPageNo, ApplicationException exception)?
+    TResult Function(List<RepositorySummary> repositories, int? nextPageNo,
+            ApplicationException exception)?
         error,
     required TResult orElse(),
   }) {
     if (initial != null) {
-      return initial(repositories, isLastPage, nextPageNo);
+      return initial(repositories, nextPageNo);
     }
     return orElse();
   }
@@ -348,14 +315,11 @@ class _$Initial with DiagnosticableTreeMixin implements Initial {
 
 abstract class Initial implements UiState {
   const factory Initial(
-      {required final List<RepositorySummary> repositories,
-      required final bool isLastPage,
+      {final List<RepositorySummary> repositories,
       final int nextPageNo}) = _$Initial;
 
   @override
   List<RepositorySummary> get repositories;
-  @override
-  bool get isLastPage;
   @override
   int get nextPageNo;
   @override
@@ -370,8 +334,7 @@ abstract class _$$LoadingCopyWith<$Res> implements $UiStateCopyWith<$Res> {
       __$$LoadingCopyWithImpl<$Res>;
   @override
   @useResult
-  $Res call(
-      {List<RepositorySummary> repositories, bool isLastPage, int? nextPageNo});
+  $Res call({List<RepositorySummary> repositories, int? nextPageNo});
 }
 
 /// @nodoc
@@ -385,7 +348,6 @@ class __$$LoadingCopyWithImpl<$Res>
   @override
   $Res call({
     Object? repositories = null,
-    Object? isLastPage = null,
     Object? nextPageNo = freezed,
   }) {
     return _then(_$Loading(
@@ -393,10 +355,6 @@ class __$$LoadingCopyWithImpl<$Res>
           ? _value._repositories
           : repositories // ignore: cast_nullable_to_non_nullable
               as List<RepositorySummary>,
-      isLastPage: null == isLastPage
-          ? _value.isLastPage
-          : isLastPage // ignore: cast_nullable_to_non_nullable
-              as bool,
       nextPageNo: freezed == nextPageNo
           ? _value.nextPageNo
           : nextPageNo // ignore: cast_nullable_to_non_nullable
@@ -410,7 +368,6 @@ class __$$LoadingCopyWithImpl<$Res>
 class _$Loading with DiagnosticableTreeMixin implements Loading {
   const _$Loading(
       {required final List<RepositorySummary> repositories,
-      required this.isLastPage,
       required this.nextPageNo})
       : _repositories = repositories;
 
@@ -423,13 +380,11 @@ class _$Loading with DiagnosticableTreeMixin implements Loading {
   }
 
   @override
-  final bool isLastPage;
-  @override
   final int? nextPageNo;
 
   @override
   String toString({DiagnosticLevel minLevel = DiagnosticLevel.info}) {
-    return 'UiState.loading(repositories: $repositories, isLastPage: $isLastPage, nextPageNo: $nextPageNo)';
+    return 'UiState.loading(repositories: $repositories, nextPageNo: $nextPageNo)';
   }
 
   @override
@@ -438,7 +393,6 @@ class _$Loading with DiagnosticableTreeMixin implements Loading {
     properties
       ..add(DiagnosticsProperty('type', 'UiState.loading'))
       ..add(DiagnosticsProperty('repositories', repositories))
-      ..add(DiagnosticsProperty('isLastPage', isLastPage))
       ..add(DiagnosticsProperty('nextPageNo', nextPageNo));
   }
 
@@ -449,18 +403,13 @@ class _$Loading with DiagnosticableTreeMixin implements Loading {
             other is _$Loading &&
             const DeepCollectionEquality()
                 .equals(other._repositories, _repositories) &&
-            (identical(other.isLastPage, isLastPage) ||
-                other.isLastPage == isLastPage) &&
             (identical(other.nextPageNo, nextPageNo) ||
                 other.nextPageNo == nextPageNo));
   }
 
   @override
-  int get hashCode => Object.hash(
-      runtimeType,
-      const DeepCollectionEquality().hash(_repositories),
-      isLastPage,
-      nextPageNo);
+  int get hashCode => Object.hash(runtimeType,
+      const DeepCollectionEquality().hash(_repositories), nextPageNo);
 
   @JsonKey(ignore: true)
   @override
@@ -471,60 +420,54 @@ class _$Loading with DiagnosticableTreeMixin implements Loading {
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function(List<RepositorySummary> repositories,
-            bool isLastPage, int nextPageNo)
+    required TResult Function(
+            List<RepositorySummary> repositories, int nextPageNo)
         initial,
-    required TResult Function(List<RepositorySummary> repositories,
-            bool isLastPage, int? nextPageNo)
+    required TResult Function(
+            List<RepositorySummary> repositories, int? nextPageNo)
         loading,
-    required TResult Function(List<RepositorySummary> repositories,
-            bool isLastPage, int? nextPageNo)
+    required TResult Function(
+            List<RepositorySummary> repositories, int? nextPageNo)
         data,
     required TResult Function(List<RepositorySummary> repositories,
-            bool isLastPage, int? nextPageNo, ApplicationException exception)
+            int? nextPageNo, ApplicationException exception)
         error,
   }) {
-    return loading(repositories, isLastPage, nextPageNo);
+    return loading(repositories, nextPageNo);
   }
 
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function(List<RepositorySummary> repositories, bool isLastPage,
-            int nextPageNo)?
+    TResult? Function(List<RepositorySummary> repositories, int nextPageNo)?
         initial,
-    TResult? Function(List<RepositorySummary> repositories, bool isLastPage,
-            int? nextPageNo)?
+    TResult? Function(List<RepositorySummary> repositories, int? nextPageNo)?
         loading,
-    TResult? Function(List<RepositorySummary> repositories, bool isLastPage,
-            int? nextPageNo)?
+    TResult? Function(List<RepositorySummary> repositories, int? nextPageNo)?
         data,
-    TResult? Function(List<RepositorySummary> repositories, bool isLastPage,
-            int? nextPageNo, ApplicationException exception)?
+    TResult? Function(List<RepositorySummary> repositories, int? nextPageNo,
+            ApplicationException exception)?
         error,
   }) {
-    return loading?.call(repositories, isLastPage, nextPageNo);
+    return loading?.call(repositories, nextPageNo);
   }
 
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function(List<RepositorySummary> repositories, bool isLastPage,
-            int nextPageNo)?
+    TResult Function(List<RepositorySummary> repositories, int nextPageNo)?
         initial,
-    TResult Function(List<RepositorySummary> repositories, bool isLastPage,
-            int? nextPageNo)?
+    TResult Function(List<RepositorySummary> repositories, int? nextPageNo)?
         loading,
-    TResult Function(List<RepositorySummary> repositories, bool isLastPage,
-            int? nextPageNo)?
+    TResult Function(List<RepositorySummary> repositories, int? nextPageNo)?
         data,
-    TResult Function(List<RepositorySummary> repositories, bool isLastPage,
-            int? nextPageNo, ApplicationException exception)?
+    TResult Function(List<RepositorySummary> repositories, int? nextPageNo,
+            ApplicationException exception)?
         error,
     required TResult orElse(),
   }) {
     if (loading != null) {
-      return loading(repositories, isLastPage, nextPageNo);
+      return loading(repositories, nextPageNo);
     }
     return orElse();
   }
@@ -570,13 +513,10 @@ class _$Loading with DiagnosticableTreeMixin implements Loading {
 abstract class Loading implements UiState {
   const factory Loading(
       {required final List<RepositorySummary> repositories,
-      required final bool isLastPage,
       required final int? nextPageNo}) = _$Loading;
 
   @override
   List<RepositorySummary> get repositories;
-  @override
-  bool get isLastPage;
   @override
   int? get nextPageNo;
   @override
@@ -591,8 +531,7 @@ abstract class _$$DataCopyWith<$Res> implements $UiStateCopyWith<$Res> {
       __$$DataCopyWithImpl<$Res>;
   @override
   @useResult
-  $Res call(
-      {List<RepositorySummary> repositories, bool isLastPage, int? nextPageNo});
+  $Res call({List<RepositorySummary> repositories, int? nextPageNo});
 }
 
 /// @nodoc
@@ -605,7 +544,6 @@ class __$$DataCopyWithImpl<$Res> extends _$UiStateCopyWithImpl<$Res, _$Data>
   @override
   $Res call({
     Object? repositories = null,
-    Object? isLastPage = null,
     Object? nextPageNo = freezed,
   }) {
     return _then(_$Data(
@@ -613,10 +551,6 @@ class __$$DataCopyWithImpl<$Res> extends _$UiStateCopyWithImpl<$Res, _$Data>
           ? _value._repositories
           : repositories // ignore: cast_nullable_to_non_nullable
               as List<RepositorySummary>,
-      isLastPage: null == isLastPage
-          ? _value.isLastPage
-          : isLastPage // ignore: cast_nullable_to_non_nullable
-              as bool,
       nextPageNo: freezed == nextPageNo
           ? _value.nextPageNo
           : nextPageNo // ignore: cast_nullable_to_non_nullable
@@ -630,7 +564,6 @@ class __$$DataCopyWithImpl<$Res> extends _$UiStateCopyWithImpl<$Res, _$Data>
 class _$Data with DiagnosticableTreeMixin implements Data {
   const _$Data(
       {required final List<RepositorySummary> repositories,
-      required this.isLastPage,
       required this.nextPageNo})
       : _repositories = repositories;
 
@@ -643,13 +576,11 @@ class _$Data with DiagnosticableTreeMixin implements Data {
   }
 
   @override
-  final bool isLastPage;
-  @override
   final int? nextPageNo;
 
   @override
   String toString({DiagnosticLevel minLevel = DiagnosticLevel.info}) {
-    return 'UiState.data(repositories: $repositories, isLastPage: $isLastPage, nextPageNo: $nextPageNo)';
+    return 'UiState.data(repositories: $repositories, nextPageNo: $nextPageNo)';
   }
 
   @override
@@ -658,7 +589,6 @@ class _$Data with DiagnosticableTreeMixin implements Data {
     properties
       ..add(DiagnosticsProperty('type', 'UiState.data'))
       ..add(DiagnosticsProperty('repositories', repositories))
-      ..add(DiagnosticsProperty('isLastPage', isLastPage))
       ..add(DiagnosticsProperty('nextPageNo', nextPageNo));
   }
 
@@ -669,18 +599,13 @@ class _$Data with DiagnosticableTreeMixin implements Data {
             other is _$Data &&
             const DeepCollectionEquality()
                 .equals(other._repositories, _repositories) &&
-            (identical(other.isLastPage, isLastPage) ||
-                other.isLastPage == isLastPage) &&
             (identical(other.nextPageNo, nextPageNo) ||
                 other.nextPageNo == nextPageNo));
   }
 
   @override
-  int get hashCode => Object.hash(
-      runtimeType,
-      const DeepCollectionEquality().hash(_repositories),
-      isLastPage,
-      nextPageNo);
+  int get hashCode => Object.hash(runtimeType,
+      const DeepCollectionEquality().hash(_repositories), nextPageNo);
 
   @JsonKey(ignore: true)
   @override
@@ -691,60 +616,54 @@ class _$Data with DiagnosticableTreeMixin implements Data {
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function(List<RepositorySummary> repositories,
-            bool isLastPage, int nextPageNo)
+    required TResult Function(
+            List<RepositorySummary> repositories, int nextPageNo)
         initial,
-    required TResult Function(List<RepositorySummary> repositories,
-            bool isLastPage, int? nextPageNo)
+    required TResult Function(
+            List<RepositorySummary> repositories, int? nextPageNo)
         loading,
-    required TResult Function(List<RepositorySummary> repositories,
-            bool isLastPage, int? nextPageNo)
+    required TResult Function(
+            List<RepositorySummary> repositories, int? nextPageNo)
         data,
     required TResult Function(List<RepositorySummary> repositories,
-            bool isLastPage, int? nextPageNo, ApplicationException exception)
+            int? nextPageNo, ApplicationException exception)
         error,
   }) {
-    return data(repositories, isLastPage, nextPageNo);
+    return data(repositories, nextPageNo);
   }
 
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function(List<RepositorySummary> repositories, bool isLastPage,
-            int nextPageNo)?
+    TResult? Function(List<RepositorySummary> repositories, int nextPageNo)?
         initial,
-    TResult? Function(List<RepositorySummary> repositories, bool isLastPage,
-            int? nextPageNo)?
+    TResult? Function(List<RepositorySummary> repositories, int? nextPageNo)?
         loading,
-    TResult? Function(List<RepositorySummary> repositories, bool isLastPage,
-            int? nextPageNo)?
+    TResult? Function(List<RepositorySummary> repositories, int? nextPageNo)?
         data,
-    TResult? Function(List<RepositorySummary> repositories, bool isLastPage,
-            int? nextPageNo, ApplicationException exception)?
+    TResult? Function(List<RepositorySummary> repositories, int? nextPageNo,
+            ApplicationException exception)?
         error,
   }) {
-    return data?.call(repositories, isLastPage, nextPageNo);
+    return data?.call(repositories, nextPageNo);
   }
 
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function(List<RepositorySummary> repositories, bool isLastPage,
-            int nextPageNo)?
+    TResult Function(List<RepositorySummary> repositories, int nextPageNo)?
         initial,
-    TResult Function(List<RepositorySummary> repositories, bool isLastPage,
-            int? nextPageNo)?
+    TResult Function(List<RepositorySummary> repositories, int? nextPageNo)?
         loading,
-    TResult Function(List<RepositorySummary> repositories, bool isLastPage,
-            int? nextPageNo)?
+    TResult Function(List<RepositorySummary> repositories, int? nextPageNo)?
         data,
-    TResult Function(List<RepositorySummary> repositories, bool isLastPage,
-            int? nextPageNo, ApplicationException exception)?
+    TResult Function(List<RepositorySummary> repositories, int? nextPageNo,
+            ApplicationException exception)?
         error,
     required TResult orElse(),
   }) {
     if (data != null) {
-      return data(repositories, isLastPage, nextPageNo);
+      return data(repositories, nextPageNo);
     }
     return orElse();
   }
@@ -790,13 +709,10 @@ class _$Data with DiagnosticableTreeMixin implements Data {
 abstract class Data implements UiState {
   const factory Data(
       {required final List<RepositorySummary> repositories,
-      required final bool isLastPage,
       required final int? nextPageNo}) = _$Data;
 
   @override
   List<RepositorySummary> get repositories;
-  @override
-  bool get isLastPage;
   @override
   int? get nextPageNo;
   @override
@@ -812,7 +728,6 @@ abstract class _$$ErrorCopyWith<$Res> implements $UiStateCopyWith<$Res> {
   @useResult
   $Res call(
       {List<RepositorySummary> repositories,
-      bool isLastPage,
       int? nextPageNo,
       ApplicationException exception});
 }
@@ -827,7 +742,6 @@ class __$$ErrorCopyWithImpl<$Res> extends _$UiStateCopyWithImpl<$Res, _$Error>
   @override
   $Res call({
     Object? repositories = null,
-    Object? isLastPage = null,
     Object? nextPageNo = freezed,
     Object? exception = null,
   }) {
@@ -836,10 +750,6 @@ class __$$ErrorCopyWithImpl<$Res> extends _$UiStateCopyWithImpl<$Res, _$Error>
           ? _value._repositories
           : repositories // ignore: cast_nullable_to_non_nullable
               as List<RepositorySummary>,
-      isLastPage: null == isLastPage
-          ? _value.isLastPage
-          : isLastPage // ignore: cast_nullable_to_non_nullable
-              as bool,
       nextPageNo: freezed == nextPageNo
           ? _value.nextPageNo
           : nextPageNo // ignore: cast_nullable_to_non_nullable
@@ -857,7 +767,6 @@ class __$$ErrorCopyWithImpl<$Res> extends _$UiStateCopyWithImpl<$Res, _$Error>
 class _$Error with DiagnosticableTreeMixin implements Error {
   const _$Error(
       {required final List<RepositorySummary> repositories,
-      required this.isLastPage,
       required this.nextPageNo,
       required this.exception})
       : _repositories = repositories;
@@ -871,15 +780,13 @@ class _$Error with DiagnosticableTreeMixin implements Error {
   }
 
   @override
-  final bool isLastPage;
-  @override
   final int? nextPageNo;
   @override
   final ApplicationException exception;
 
   @override
   String toString({DiagnosticLevel minLevel = DiagnosticLevel.info}) {
-    return 'UiState.error(repositories: $repositories, isLastPage: $isLastPage, nextPageNo: $nextPageNo, exception: $exception)';
+    return 'UiState.error(repositories: $repositories, nextPageNo: $nextPageNo, exception: $exception)';
   }
 
   @override
@@ -888,7 +795,6 @@ class _$Error with DiagnosticableTreeMixin implements Error {
     properties
       ..add(DiagnosticsProperty('type', 'UiState.error'))
       ..add(DiagnosticsProperty('repositories', repositories))
-      ..add(DiagnosticsProperty('isLastPage', isLastPage))
       ..add(DiagnosticsProperty('nextPageNo', nextPageNo))
       ..add(DiagnosticsProperty('exception', exception));
   }
@@ -900,8 +806,6 @@ class _$Error with DiagnosticableTreeMixin implements Error {
             other is _$Error &&
             const DeepCollectionEquality()
                 .equals(other._repositories, _repositories) &&
-            (identical(other.isLastPage, isLastPage) ||
-                other.isLastPage == isLastPage) &&
             (identical(other.nextPageNo, nextPageNo) ||
                 other.nextPageNo == nextPageNo) &&
             (identical(other.exception, exception) ||
@@ -912,7 +816,6 @@ class _$Error with DiagnosticableTreeMixin implements Error {
   int get hashCode => Object.hash(
       runtimeType,
       const DeepCollectionEquality().hash(_repositories),
-      isLastPage,
       nextPageNo,
       exception);
 
@@ -925,60 +828,54 @@ class _$Error with DiagnosticableTreeMixin implements Error {
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function(List<RepositorySummary> repositories,
-            bool isLastPage, int nextPageNo)
+    required TResult Function(
+            List<RepositorySummary> repositories, int nextPageNo)
         initial,
-    required TResult Function(List<RepositorySummary> repositories,
-            bool isLastPage, int? nextPageNo)
+    required TResult Function(
+            List<RepositorySummary> repositories, int? nextPageNo)
         loading,
-    required TResult Function(List<RepositorySummary> repositories,
-            bool isLastPage, int? nextPageNo)
+    required TResult Function(
+            List<RepositorySummary> repositories, int? nextPageNo)
         data,
     required TResult Function(List<RepositorySummary> repositories,
-            bool isLastPage, int? nextPageNo, ApplicationException exception)
+            int? nextPageNo, ApplicationException exception)
         error,
   }) {
-    return error(repositories, isLastPage, nextPageNo, exception);
+    return error(repositories, nextPageNo, exception);
   }
 
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function(List<RepositorySummary> repositories, bool isLastPage,
-            int nextPageNo)?
+    TResult? Function(List<RepositorySummary> repositories, int nextPageNo)?
         initial,
-    TResult? Function(List<RepositorySummary> repositories, bool isLastPage,
-            int? nextPageNo)?
+    TResult? Function(List<RepositorySummary> repositories, int? nextPageNo)?
         loading,
-    TResult? Function(List<RepositorySummary> repositories, bool isLastPage,
-            int? nextPageNo)?
+    TResult? Function(List<RepositorySummary> repositories, int? nextPageNo)?
         data,
-    TResult? Function(List<RepositorySummary> repositories, bool isLastPage,
-            int? nextPageNo, ApplicationException exception)?
+    TResult? Function(List<RepositorySummary> repositories, int? nextPageNo,
+            ApplicationException exception)?
         error,
   }) {
-    return error?.call(repositories, isLastPage, nextPageNo, exception);
+    return error?.call(repositories, nextPageNo, exception);
   }
 
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function(List<RepositorySummary> repositories, bool isLastPage,
-            int nextPageNo)?
+    TResult Function(List<RepositorySummary> repositories, int nextPageNo)?
         initial,
-    TResult Function(List<RepositorySummary> repositories, bool isLastPage,
-            int? nextPageNo)?
+    TResult Function(List<RepositorySummary> repositories, int? nextPageNo)?
         loading,
-    TResult Function(List<RepositorySummary> repositories, bool isLastPage,
-            int? nextPageNo)?
+    TResult Function(List<RepositorySummary> repositories, int? nextPageNo)?
         data,
-    TResult Function(List<RepositorySummary> repositories, bool isLastPage,
-            int? nextPageNo, ApplicationException exception)?
+    TResult Function(List<RepositorySummary> repositories, int? nextPageNo,
+            ApplicationException exception)?
         error,
     required TResult orElse(),
   }) {
     if (error != null) {
-      return error(repositories, isLastPage, nextPageNo, exception);
+      return error(repositories, nextPageNo, exception);
     }
     return orElse();
   }
@@ -1024,14 +921,11 @@ class _$Error with DiagnosticableTreeMixin implements Error {
 abstract class Error implements UiState {
   const factory Error(
       {required final List<RepositorySummary> repositories,
-      required final bool isLastPage,
       required final int? nextPageNo,
       required final ApplicationException exception}) = _$Error;
 
   @override
   List<RepositorySummary> get repositories;
-  @override
-  bool get isLastPage;
   @override
   int? get nextPageNo;
   ApplicationException get exception;
