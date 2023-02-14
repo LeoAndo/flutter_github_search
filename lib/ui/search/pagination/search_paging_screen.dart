@@ -1,6 +1,9 @@
 // Flutter imports:
 import 'package:flutter/material.dart';
+import 'package:flutter_github_search/domain/exception/application_exception.dart';
+import 'package:flutter_github_search/domain/exception/validation_exceptions.dart';
 import 'package:flutter_github_search/ui/search/pagination/search_paging_notifier.dart';
+import 'package:flutter_github_search/ui/search/pagination/ui_state.dart';
 
 // Package imports:
 import 'package:flutter_riverpod/flutter_riverpod.dart';
@@ -11,6 +14,7 @@ import 'package:flutter_github_search/domain/model/repository_summary.dart';
 import 'package:flutter_github_search/ui/detail/detail_screen.dart';
 import '../../../domain/exception/api_exceptions.dart';
 import '../../components/app_error.dart';
+import '../../components/app_loading.dart';
 
 class SearchPagingScreen extends ConsumerStatefulWidget {
   const SearchPagingScreen({super.key});
@@ -49,15 +53,17 @@ class _SearchPagingScreenState extends ConsumerState<SearchPagingScreen> {
   Widget _buildBody(WidgetRef ref) {
     final uiState = ref.watch(searchPagingStateNotifierProvider);
     return uiState.when(
-      // loading: () {
-      //   return AppLoading(
-      //     mainWidget: _buildMainWidget(
-      //       onFieldSubmitted: (_) {},
-      //     ),
-      //   );
-      // },
+      loading: () {
+        return AppLoading(
+          mainWidget: _buildMainWidget(
+            onFieldSubmitted: (_) {},
+          ),
+        );
+      },
       initial: () => _buildMainWidget(
           child: _buildListView(
+            uiState: uiState,
+            nextPageNo: null,
             repositories: [],
             onTap: (_) {},
           ),
@@ -66,8 +72,10 @@ class _SearchPagingScreenState extends ConsumerState<SearchPagingScreen> {
                 .read(searchPagingStateNotifierProvider.notifier)
                 .searchRepositories(query: value, page: 1);
           }),
-      data: (repositories, isFinish, page) => _buildMainWidget(
+      data: (repositories, isLastPage, nextPageNo) => _buildMainWidget(
           child: _buildListView(
+            uiState: uiState,
+            nextPageNo: nextPageNo,
             repositories: repositories,
             onTap: (repository) {
               Navigator.push<void>(
@@ -86,7 +94,7 @@ class _SearchPagingScreenState extends ConsumerState<SearchPagingScreen> {
                 .read(searchPagingStateNotifierProvider.notifier)
                 .searchRepositories(query: value, page: 1);
           }),
-      error: (ApiException e) {
+      error: (ApplicationException e) {
         return AppError(
           message: e.message,
           onReload: () {
@@ -131,6 +139,8 @@ class _SearchPagingScreenState extends ConsumerState<SearchPagingScreen> {
   Widget _buildListView({
     required List<RepositorySummary> repositories,
     required Function(RepositorySummary repository) onTap,
+    required int? nextPageNo,
+    required UiState uiState,
   }) {
     return repositories.isEmpty
         ? Container()
@@ -145,6 +155,7 @@ class _SearchPagingScreenState extends ConsumerState<SearchPagingScreen> {
                       child: InkWell(
                           onTap: () => onTap(repository),
                           child: ListTile(
+                            leading: Text('$index'),
                             title: Text(repository.ownerName),
                             subtitle: Text(repository.name),
                             contentPadding: const EdgeInsets.all(8),
@@ -153,10 +164,21 @@ class _SearchPagingScreenState extends ConsumerState<SearchPagingScreen> {
                   }),
             ),
             onNotification: (notification) {
-              // print(notification);
               if (notification is OverscrollNotification) {
-                if (notification.overscroll > 0) {}
-                Logger().d('overscroll: ${notification.overscroll}');
+                if (uiState is Loading) {
+                } else {
+                  Logger().d('ando is not Loading');
+                  if (notification.overscroll > 0 && nextPageNo != null) {
+                    // 下端のオーバースクロール && 次ページがある場合
+                    //  検索APIを叩く.
+                    Logger().d('ando 検索APIを叩く. $nextPageNo');
+                    ref
+                        .read(searchPagingStateNotifierProvider.notifier)
+                        .searchRepositories(
+                            query: _textEditingController.text,
+                            page: nextPageNo);
+                  }
+                }
               }
               return false;
             },

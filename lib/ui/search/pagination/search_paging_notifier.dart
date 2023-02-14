@@ -1,10 +1,11 @@
 // Package imports:
 import 'package:flutter_github_search/data/api/github/github_api.dart';
+import 'package:flutter_github_search/domain/exception/application_exception.dart';
+import 'package:flutter_github_search/domain/exception/validation_exceptions.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:logger/logger.dart';
 
 import '../../../data/repository/github_repo_repository_impl.dart';
-import '../../../domain/exception/api_exceptions.dart';
 import '../../../domain/repository/github_repo_repository.dart';
 import 'ui_state.dart';
 
@@ -23,7 +24,10 @@ class SearchPagingStateNotifier extends StateNotifier<UiState> {
 
   void searchRepositories({required String query, required int page}) async {
     try {
-      if (query.isEmpty) throw const ForbiddenExeption("query is empty error.");
+      state = const UiState.loading();
+      if (query.isEmpty) {
+        throw const InputValidationException("please input search word.");
+      }
 
       final newItems =
           await _repository.searchRepositories(query: query, page: page);
@@ -36,7 +40,7 @@ class SearchPagingStateNotifier extends StateNotifier<UiState> {
         state = UiState.data(
             repositories: newItems, isLastPage: isLastPage, nextPageNo: page);
       }
-    } on ApiException catch (e) {
+    } on ApplicationException catch (e) {
       state = UiState.error(e);
     }
   }

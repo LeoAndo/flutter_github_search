@@ -19,34 +19,38 @@ mixin _$UiState {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function() initial,
+    required TResult Function() loading,
     required TResult Function(List<RepositorySummary> repositories,
             bool isLastPage, int? nextPageNo)
         data,
-    required TResult Function(ApiException apiException) error,
+    required TResult Function(ApplicationException exception) error,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? initial,
+    TResult? Function()? loading,
     TResult? Function(List<RepositorySummary> repositories, bool isLastPage,
             int? nextPageNo)?
         data,
-    TResult? Function(ApiException apiException)? error,
+    TResult? Function(ApplicationException exception)? error,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? initial,
+    TResult Function()? loading,
     TResult Function(List<RepositorySummary> repositories, bool isLastPage,
             int? nextPageNo)?
         data,
-    TResult Function(ApiException apiException)? error,
+    TResult Function(ApplicationException exception)? error,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
     required TResult Function(Initial value) initial,
+    required TResult Function(Loading value) loading,
     required TResult Function(Data value) data,
     required TResult Function(Error value) error,
   }) =>
@@ -54,6 +58,7 @@ mixin _$UiState {
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
     TResult? Function(Initial value)? initial,
+    TResult? Function(Loading value)? loading,
     TResult? Function(Data value)? data,
     TResult? Function(Error value)? error,
   }) =>
@@ -61,6 +66,7 @@ mixin _$UiState {
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
     TResult Function(Initial value)? initial,
+    TResult Function(Loading value)? loading,
     TResult Function(Data value)? data,
     TResult Function(Error value)? error,
     required TResult orElse(),
@@ -128,10 +134,11 @@ class _$Initial with DiagnosticableTreeMixin implements Initial {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function() initial,
+    required TResult Function() loading,
     required TResult Function(List<RepositorySummary> repositories,
             bool isLastPage, int? nextPageNo)
         data,
-    required TResult Function(ApiException apiException) error,
+    required TResult Function(ApplicationException exception) error,
   }) {
     return initial();
   }
@@ -140,10 +147,11 @@ class _$Initial with DiagnosticableTreeMixin implements Initial {
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? initial,
+    TResult? Function()? loading,
     TResult? Function(List<RepositorySummary> repositories, bool isLastPage,
             int? nextPageNo)?
         data,
-    TResult? Function(ApiException apiException)? error,
+    TResult? Function(ApplicationException exception)? error,
   }) {
     return initial?.call();
   }
@@ -152,10 +160,11 @@ class _$Initial with DiagnosticableTreeMixin implements Initial {
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? initial,
+    TResult Function()? loading,
     TResult Function(List<RepositorySummary> repositories, bool isLastPage,
             int? nextPageNo)?
         data,
-    TResult Function(ApiException apiException)? error,
+    TResult Function(ApplicationException exception)? error,
     required TResult orElse(),
   }) {
     if (initial != null) {
@@ -168,6 +177,7 @@ class _$Initial with DiagnosticableTreeMixin implements Initial {
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
     required TResult Function(Initial value) initial,
+    required TResult Function(Loading value) loading,
     required TResult Function(Data value) data,
     required TResult Function(Error value) error,
   }) {
@@ -178,6 +188,7 @@ class _$Initial with DiagnosticableTreeMixin implements Initial {
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
     TResult? Function(Initial value)? initial,
+    TResult? Function(Loading value)? loading,
     TResult? Function(Data value)? data,
     TResult? Function(Error value)? error,
   }) {
@@ -188,6 +199,7 @@ class _$Initial with DiagnosticableTreeMixin implements Initial {
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
     TResult Function(Initial value)? initial,
+    TResult Function(Loading value)? loading,
     TResult Function(Data value)? data,
     TResult Function(Error value)? error,
     required TResult orElse(),
@@ -201,6 +213,130 @@ class _$Initial with DiagnosticableTreeMixin implements Initial {
 
 abstract class Initial implements UiState {
   const factory Initial() = _$Initial;
+}
+
+/// @nodoc
+abstract class _$$LoadingCopyWith<$Res> {
+  factory _$$LoadingCopyWith(_$Loading value, $Res Function(_$Loading) then) =
+      __$$LoadingCopyWithImpl<$Res>;
+}
+
+/// @nodoc
+class __$$LoadingCopyWithImpl<$Res>
+    extends _$UiStateCopyWithImpl<$Res, _$Loading>
+    implements _$$LoadingCopyWith<$Res> {
+  __$$LoadingCopyWithImpl(_$Loading _value, $Res Function(_$Loading) _then)
+      : super(_value, _then);
+}
+
+/// @nodoc
+
+class _$Loading with DiagnosticableTreeMixin implements Loading {
+  const _$Loading();
+
+  @override
+  String toString({DiagnosticLevel minLevel = DiagnosticLevel.info}) {
+    return 'UiState.loading()';
+  }
+
+  @override
+  void debugFillProperties(DiagnosticPropertiesBuilder properties) {
+    super.debugFillProperties(properties);
+    properties.add(DiagnosticsProperty('type', 'UiState.loading'));
+  }
+
+  @override
+  bool operator ==(dynamic other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType && other is _$Loading);
+  }
+
+  @override
+  int get hashCode => runtimeType.hashCode;
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function() initial,
+    required TResult Function() loading,
+    required TResult Function(List<RepositorySummary> repositories,
+            bool isLastPage, int? nextPageNo)
+        data,
+    required TResult Function(ApplicationException exception) error,
+  }) {
+    return loading();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult? Function()? initial,
+    TResult? Function()? loading,
+    TResult? Function(List<RepositorySummary> repositories, bool isLastPage,
+            int? nextPageNo)?
+        data,
+    TResult? Function(ApplicationException exception)? error,
+  }) {
+    return loading?.call();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function()? initial,
+    TResult Function()? loading,
+    TResult Function(List<RepositorySummary> repositories, bool isLastPage,
+            int? nextPageNo)?
+        data,
+    TResult Function(ApplicationException exception)? error,
+    required TResult orElse(),
+  }) {
+    if (loading != null) {
+      return loading();
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(Initial value) initial,
+    required TResult Function(Loading value) loading,
+    required TResult Function(Data value) data,
+    required TResult Function(Error value) error,
+  }) {
+    return loading(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult? Function(Initial value)? initial,
+    TResult? Function(Loading value)? loading,
+    TResult? Function(Data value)? data,
+    TResult? Function(Error value)? error,
+  }) {
+    return loading?.call(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(Initial value)? initial,
+    TResult Function(Loading value)? loading,
+    TResult Function(Data value)? data,
+    TResult Function(Error value)? error,
+    required TResult orElse(),
+  }) {
+    if (loading != null) {
+      return loading(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class Loading implements UiState {
+  const factory Loading() = _$Loading;
 }
 
 /// @nodoc
@@ -309,10 +445,11 @@ class _$Data with DiagnosticableTreeMixin implements Data {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function() initial,
+    required TResult Function() loading,
     required TResult Function(List<RepositorySummary> repositories,
             bool isLastPage, int? nextPageNo)
         data,
-    required TResult Function(ApiException apiException) error,
+    required TResult Function(ApplicationException exception) error,
   }) {
     return data(repositories, isLastPage, nextPageNo);
   }
@@ -321,10 +458,11 @@ class _$Data with DiagnosticableTreeMixin implements Data {
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? initial,
+    TResult? Function()? loading,
     TResult? Function(List<RepositorySummary> repositories, bool isLastPage,
             int? nextPageNo)?
         data,
-    TResult? Function(ApiException apiException)? error,
+    TResult? Function(ApplicationException exception)? error,
   }) {
     return data?.call(repositories, isLastPage, nextPageNo);
   }
@@ -333,10 +471,11 @@ class _$Data with DiagnosticableTreeMixin implements Data {
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? initial,
+    TResult Function()? loading,
     TResult Function(List<RepositorySummary> repositories, bool isLastPage,
             int? nextPageNo)?
         data,
-    TResult Function(ApiException apiException)? error,
+    TResult Function(ApplicationException exception)? error,
     required TResult orElse(),
   }) {
     if (data != null) {
@@ -349,6 +488,7 @@ class _$Data with DiagnosticableTreeMixin implements Data {
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
     required TResult Function(Initial value) initial,
+    required TResult Function(Loading value) loading,
     required TResult Function(Data value) data,
     required TResult Function(Error value) error,
   }) {
@@ -359,6 +499,7 @@ class _$Data with DiagnosticableTreeMixin implements Data {
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
     TResult? Function(Initial value)? initial,
+    TResult? Function(Loading value)? loading,
     TResult? Function(Data value)? data,
     TResult? Function(Error value)? error,
   }) {
@@ -369,6 +510,7 @@ class _$Data with DiagnosticableTreeMixin implements Data {
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
     TResult Function(Initial value)? initial,
+    TResult Function(Loading value)? loading,
     TResult Function(Data value)? data,
     TResult Function(Error value)? error,
     required TResult orElse(),
@@ -398,7 +540,7 @@ abstract class _$$ErrorCopyWith<$Res> {
   factory _$$ErrorCopyWith(_$Error value, $Res Function(_$Error) then) =
       __$$ErrorCopyWithImpl<$Res>;
   @useResult
-  $Res call({ApiException apiException});
+  $Res call({ApplicationException exception});
 }
 
 /// @nodoc
@@ -410,13 +552,13 @@ class __$$ErrorCopyWithImpl<$Res> extends _$UiStateCopyWithImpl<$Res, _$Error>
   @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? apiException = null,
+    Object? exception = null,
   }) {
     return _then(_$Error(
-      null == apiException
-          ? _value.apiException
-          : apiException // ignore: cast_nullable_to_non_nullable
-              as ApiException,
+      null == exception
+          ? _value.exception
+          : exception // ignore: cast_nullable_to_non_nullable
+              as ApplicationException,
     ));
   }
 }
@@ -424,14 +566,14 @@ class __$$ErrorCopyWithImpl<$Res> extends _$UiStateCopyWithImpl<$Res, _$Error>
 /// @nodoc
 
 class _$Error with DiagnosticableTreeMixin implements Error {
-  const _$Error(this.apiException);
+  const _$Error(this.exception);
 
   @override
-  final ApiException apiException;
+  final ApplicationException exception;
 
   @override
   String toString({DiagnosticLevel minLevel = DiagnosticLevel.info}) {
-    return 'UiState.error(apiException: $apiException)';
+    return 'UiState.error(exception: $exception)';
   }
 
   @override
@@ -439,7 +581,7 @@ class _$Error with DiagnosticableTreeMixin implements Error {
     super.debugFillProperties(properties);
     properties
       ..add(DiagnosticsProperty('type', 'UiState.error'))
-      ..add(DiagnosticsProperty('apiException', apiException));
+      ..add(DiagnosticsProperty('exception', exception));
   }
 
   @override
@@ -447,12 +589,12 @@ class _$Error with DiagnosticableTreeMixin implements Error {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$Error &&
-            (identical(other.apiException, apiException) ||
-                other.apiException == apiException));
+            (identical(other.exception, exception) ||
+                other.exception == exception));
   }
 
   @override
-  int get hashCode => Object.hash(runtimeType, apiException);
+  int get hashCode => Object.hash(runtimeType, exception);
 
   @JsonKey(ignore: true)
   @override
@@ -464,38 +606,41 @@ class _$Error with DiagnosticableTreeMixin implements Error {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function() initial,
+    required TResult Function() loading,
     required TResult Function(List<RepositorySummary> repositories,
             bool isLastPage, int? nextPageNo)
         data,
-    required TResult Function(ApiException apiException) error,
+    required TResult Function(ApplicationException exception) error,
   }) {
-    return error(apiException);
+    return error(exception);
   }
 
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? initial,
+    TResult? Function()? loading,
     TResult? Function(List<RepositorySummary> repositories, bool isLastPage,
             int? nextPageNo)?
         data,
-    TResult? Function(ApiException apiException)? error,
+    TResult? Function(ApplicationException exception)? error,
   }) {
-    return error?.call(apiException);
+    return error?.call(exception);
   }
 
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? initial,
+    TResult Function()? loading,
     TResult Function(List<RepositorySummary> repositories, bool isLastPage,
             int? nextPageNo)?
         data,
-    TResult Function(ApiException apiException)? error,
+    TResult Function(ApplicationException exception)? error,
     required TResult orElse(),
   }) {
     if (error != null) {
-      return error(apiException);
+      return error(exception);
     }
     return orElse();
   }
@@ -504,6 +649,7 @@ class _$Error with DiagnosticableTreeMixin implements Error {
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
     required TResult Function(Initial value) initial,
+    required TResult Function(Loading value) loading,
     required TResult Function(Data value) data,
     required TResult Function(Error value) error,
   }) {
@@ -514,6 +660,7 @@ class _$Error with DiagnosticableTreeMixin implements Error {
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
     TResult? Function(Initial value)? initial,
+    TResult? Function(Loading value)? loading,
     TResult? Function(Data value)? data,
     TResult? Function(Error value)? error,
   }) {
@@ -524,6 +671,7 @@ class _$Error with DiagnosticableTreeMixin implements Error {
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
     TResult Function(Initial value)? initial,
+    TResult Function(Loading value)? loading,
     TResult Function(Data value)? data,
     TResult Function(Error value)? error,
     required TResult orElse(),
@@ -536,9 +684,9 @@ class _$Error with DiagnosticableTreeMixin implements Error {
 }
 
 abstract class Error implements UiState {
-  const factory Error(final ApiException apiException) = _$Error;
+  const factory Error(final ApplicationException exception) = _$Error;
 
-  ApiException get apiException;
+  ApplicationException get exception;
   @JsonKey(ignore: true)
   _$$ErrorCopyWith<_$Error> get copyWith => throw _privateConstructorUsedError;
 }
