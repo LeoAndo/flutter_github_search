@@ -1,11 +1,11 @@
 // Package imports:
-import 'package:flutter_github_search/domain/exception/application_exception.dart';
-import 'package:flutter_github_search/domain/exception/validation_exceptions.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:logger/logger.dart';
 
 // Project imports:
 import 'package:flutter_github_search/data/repository/github_repo_repository_impl.dart';
+import 'package:flutter_github_search/domain/exception/application_exception.dart';
+import 'package:flutter_github_search/domain/exception/validation_exceptions.dart';
 import 'package:flutter_github_search/domain/repository/github_repo_repository.dart';
 import 'package:flutter_github_search/ui/search/ui_state.dart';
 

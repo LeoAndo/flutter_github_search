@@ -1,3 +1,4 @@
+// Project imports:
 import 'package:flutter_github_search/domain/exception/application_exception.dart';
 
 enum ApiExceptionType {

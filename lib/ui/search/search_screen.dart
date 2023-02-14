@@ -1,12 +1,12 @@
 // Flutter imports:
 import 'package:flutter/material.dart';
-import 'package:flutter_github_search/domain/exception/application_exception.dart';
 
 // Package imports:
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:logger/logger.dart';
 
 // Project imports:
+import 'package:flutter_github_search/domain/exception/application_exception.dart';
 import 'package:flutter_github_search/domain/model/repository_summary.dart';
 import 'package:flutter_github_search/ui/detail/detail_screen.dart';
 import '../components/app_error.dart';

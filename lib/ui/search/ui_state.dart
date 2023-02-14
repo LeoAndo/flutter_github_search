@@ -1,12 +1,12 @@
 // Flutter imports:
 import 'package:flutter/foundation.dart';
-import '../../../domain/exception/application_exception.dart';
 
 // Package imports:
 import 'package:freezed_annotation/freezed_annotation.dart';
 
 // Project imports:
 import 'package:flutter_github_search/domain/model/repository_summary.dart';
+import '../../../domain/exception/application_exception.dart';
 
 part 'ui_state.freezed.dart';
 

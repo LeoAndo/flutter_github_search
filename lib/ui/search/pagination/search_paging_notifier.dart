@@ -1,11 +1,12 @@
 // Package imports:
+import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:logger/logger.dart';
+
+// Project imports:
 import 'package:flutter_github_search/data/api/github/github_api.dart';
 import 'package:flutter_github_search/domain/exception/application_exception.dart';
 import 'package:flutter_github_search/domain/exception/validation_exceptions.dart';
 import 'package:flutter_github_search/domain/model/repository_summary.dart';
-import 'package:flutter_riverpod/flutter_riverpod.dart';
-import 'package:logger/logger.dart';
-
 import '../../../data/repository/github_repo_repository_impl.dart';
 import '../../../domain/repository/github_repo_repository.dart';
 import 'ui_state.dart';
