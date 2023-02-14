@@ -15,11 +15,12 @@ final Provider githubApiProvider = Provider<GithubApi>((_) {
 
 class GithubApi {
   static const _authority = 'api.github.com';
+  static const perPage = 20;
   final client = GithubApiHttpClient();
   Future<SearchRepositoriesResponse> searchRepositories(
       {required String query,
       required int page,
-      int perPage = 20,
+      int perPage = perPage,
       String sort = "stars"}) async {
     final queryParameters = <String, String>{
       'q': query,
