@@ -20,7 +20,10 @@
 .classpath
 .project
 .settings/
-#.vscode/
+.vscode/*
+!.vscode/settings.json
+!.vscode/launch.json
+!.vscode/extensions.json
 
 # Flutter repo-specific
 /bin/cache/
