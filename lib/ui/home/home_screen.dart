@@ -1,5 +1,6 @@
 // Flutter imports:
 import 'package:flutter/material.dart';
+import 'package:flutter_github_search/ui/package_info/package_info_screen.dart';
 
 // Project imports:
 import 'package:flutter_github_search/ui/search/pagination/search_paging_screen.dart';
@@ -35,6 +36,16 @@ class HomeScreen extends StatelessWidget {
                       MaterialPageRoute<void>(
                           builder: (BuildContext context) =>
                               const EnvironmentVariableScreen()));
+                }),
+            ListTile(
+                leading: const Icon(Icons.info),
+                title: const Text("Package Info"),
+                onTap: () {
+                  Navigator.push(
+                      context,
+                      MaterialPageRoute<void>(
+                          builder: (BuildContext context) =>
+                              const PackageInfoScreen()));
                 }),
             ListTile(
                 leading: const Icon(Icons.flutter_dash_outlined),

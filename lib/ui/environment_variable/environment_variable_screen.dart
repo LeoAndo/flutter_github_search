@@ -12,6 +12,9 @@ class EnvironmentVariableScreen extends StatelessWidget {
     const githubAccessToken = String.fromEnvironment('githubAccessToken');
     const githubApiDomain = String.fromEnvironment('githubApiDomain');
     return Scaffold(
+      appBar: AppBar(
+        title: const Text('Env Variable'),
+      ),
       body: SafeArea(
           child: SingleChildScrollView(
         child: Column(
