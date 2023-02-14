@@ -25,7 +25,7 @@ class SearchPagingStateNotifier extends StateNotifier<UiState> {
   final GithubRepoRepository _repository;
 
   void searchRepositories(
-      {required String query, required int page, bool refresh = false}) async {
+      {required String query, int page = 1, bool refresh = false}) async {
     Logger().d('ando searchRepositories page: $page, refresh: $refresh');
     final List<RepositorySummary> repositories =
         (refresh) ? [] : state.repositories;
