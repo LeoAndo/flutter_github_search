@@ -14,7 +14,7 @@ final Provider githubApiProvider = Provider<GithubApi>((_) {
 });
 
 class GithubApi {
-  static const _authority = 'api.github.com';
+  static const _authority = String.fromEnvironment('githubApiDomain');
   static const perPage = 20;
   final client = GithubApiHttpClient();
   Future<SearchRepositoriesResponse> searchRepositories(

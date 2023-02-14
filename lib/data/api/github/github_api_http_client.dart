@@ -10,10 +10,11 @@ import 'package:flutter_github_search/data/api/http_handler.dart';
 import 'package:flutter_github_search/domain/exception/api_exceptions.dart';
 
 class GithubApiHttpClient extends http.BaseClient {
-  // static const String _accessToken = "INPUT HERE TOKEN";
+  static const String _accessToken =
+      String.fromEnvironment('githubAccessToken');
   final Map<String, String> _headers = <String, String>{
     'Accept': 'application/vnd.github.v3+json',
-    // 'Authorization': 'Bearer $_accessToken',
+    'Authorization': 'Bearer $_accessToken',
     'X-GitHub-Api-Version': '2022-11-28',
   };
   final http.Client _client = http.Client();

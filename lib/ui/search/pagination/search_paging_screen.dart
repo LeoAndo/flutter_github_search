@@ -66,8 +66,7 @@ class _SearchPagingScreenState extends ConsumerState<SearchPagingScreen> {
           onFieldSubmitted: (String value) {
             ref
                 .read(searchPagingStateNotifierProvider.notifier)
-                .searchRepositories(
-                    query: value, page: nextPageNo, refresh: true);
+                .searchRepositories(query: value, refresh: true);
           },
           uiState: uiState),
       data: (_, nextPageNo) => _buildMainWidget(
@@ -88,8 +87,7 @@ class _SearchPagingScreenState extends ConsumerState<SearchPagingScreen> {
         onFieldSubmitted: (String value) {
           ref
               .read(searchPagingStateNotifierProvider.notifier)
-              .searchRepositories(
-                  query: value, page: nextPageNo ?? 1, refresh: true);
+              .searchRepositories(query: value, refresh: true);
         },
         uiState: uiState,
       ),
@@ -113,8 +111,7 @@ class _SearchPagingScreenState extends ConsumerState<SearchPagingScreen> {
           onFieldSubmitted: (String value) {
             ref
                 .read(searchPagingStateNotifierProvider.notifier)
-                .searchRepositories(
-                    query: value, page: nextPageNo ?? 1, refresh: true);
+                .searchRepositories(query: value, refresh: true);
           },
           uiState: uiState,
           errorMessage: e.message,
@@ -199,12 +196,41 @@ class _SearchPagingScreenState extends ConsumerState<SearchPagingScreen> {
                   }),
             ),
             onNotification: (notification) {
+              // WORKAROUND!
+              // ios/macosで動作 - START
+              // ios/macosだとOverscrollNotificationが呼ばれないので、notification.metrics.outOfRangeを使用
+              final outOfRange = notification.metrics.outOfRange;
+              final extentAfter = notification.metrics.extentAfter;
+              final extentBefore = notification.metrics.extentBefore;
+              Logger().d('ando outOfRange $outOfRange');
+              Logger().d('ando extentAfter $extentAfter');
+              Logger().d('ando extentBefore $extentBefore');
+              if (outOfRange == true && extentAfter <= 0) {
+                Logger().d('ando 下端のオーバースクロールの場合');
+                if (uiState is Loading) {
+                } else {
+                  if (uiState.nextPageNo != null) {
+                    // 次ページがある場合のみ検索APIを叩く.
+                    Logger().d('ando nextPageNo: ${uiState.nextPageNo}');
+                    ref
+                        .read(searchPagingStateNotifierProvider.notifier)
+                        .searchRepositories(
+                            query: _textEditingController.text,
+                            page: uiState.nextPageNo ?? 1);
+                  }
+                }
+              } else if (outOfRange == true && extentBefore <= 0) {
+                Logger().d('ando 上端のオーバースクロールの場合');
+              }
+              // ios/macosで動作 - END
+              // Androidで動作 - START
               if (notification is OverscrollNotification) {
                 if (uiState is Loading) {
                 } else {
                   if (notification.overscroll > 0 &&
                       uiState.nextPageNo != null) {
                     // 下端のオーバースクロール && 次ページがある場合のみ検索APIを叩く.
+                    Logger().d('ando nextPageNo: ${uiState.nextPageNo}');
                     ref
                         .read(searchPagingStateNotifierProvider.notifier)
                         .searchRepositories(
@@ -213,6 +239,7 @@ class _SearchPagingScreenState extends ConsumerState<SearchPagingScreen> {
                   }
                 }
               }
+              // Androidで動作 - END
               return false;
             },
           );

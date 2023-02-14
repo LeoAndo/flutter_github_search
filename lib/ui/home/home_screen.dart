@@ -2,8 +2,10 @@
 import 'package:flutter/material.dart';
 
 // Project imports:
+import 'package:flutter_github_search/ui/package_info/package_info_screen.dart';
 import 'package:flutter_github_search/ui/search/pagination/search_paging_screen.dart';
 import 'package:flutter_github_search/ui/search/search_screen.dart';
+import '../environment_variable/environment_variable_screen.dart';
 
 class HomeScreen extends StatelessWidget {
   const HomeScreen({super.key, required this.title});
@@ -25,6 +27,26 @@ class HomeScreen extends StatelessWidget {
               child: Text(
                   'Paging compatible / non-compatible versions are available.'),
             ),
+            ListTile(
+                leading: const Icon(Icons.computer),
+                title: const Text("Environment Variable"),
+                onTap: () {
+                  Navigator.push(
+                      context,
+                      MaterialPageRoute<void>(
+                          builder: (BuildContext context) =>
+                              const EnvironmentVariableScreen()));
+                }),
+            ListTile(
+                leading: const Icon(Icons.info),
+                title: const Text("Package Info"),
+                onTap: () {
+                  Navigator.push(
+                      context,
+                      MaterialPageRoute<void>(
+                          builder: (BuildContext context) =>
+                              const PackageInfoScreen()));
+                }),
             ListTile(
                 leading: const Icon(Icons.flutter_dash_outlined),
                 title: const Text("Paging compatible"),
