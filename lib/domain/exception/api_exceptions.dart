@@ -1,3 +1,6 @@
+// Project imports:
+import 'package:flutter_github_search/domain/exception/application_exception.dart';
+
 enum ApiExceptionType {
   unAuthorized,
   forbidden,
@@ -10,12 +13,11 @@ enum ApiExceptionType {
 }
 
 /// 通信処理時の例外用クラス.
-abstract class ApiException implements Exception {
+abstract class ApiException implements ApplicationException {
   const ApiException(this.message, this.type);
+  @override
   final String message;
   final ApiExceptionType type;
-  @override
-  String toString() => message;
 }
 
 class UnAuthorizedException implements ApiException {

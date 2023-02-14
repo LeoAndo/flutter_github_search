@@ -2,6 +2,7 @@
 import 'package:flutter/material.dart';
 
 // Project imports:
+import 'package:flutter_github_search/ui/search/pagination/search_paging_screen.dart';
 import 'package:flutter_github_search/ui/search/search_screen.dart';
 
 class HomeScreen extends StatelessWidget {
@@ -28,7 +29,11 @@ class HomeScreen extends StatelessWidget {
                 leading: const Icon(Icons.flutter_dash_outlined),
                 title: const Text("Paging compatible"),
                 onTap: () {
-                  Navigator.maybePop(context);
+                  Navigator.push(
+                      context,
+                      MaterialPageRoute<void>(
+                          builder: (BuildContext context) =>
+                              const SearchPagingScreen()));
                 }),
             ListTile(
                 leading: const Icon(Icons.flutter_dash_outlined),

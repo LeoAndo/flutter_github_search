@@ -21,7 +21,7 @@ mixin _$UiState {
     required TResult Function() initial,
     required TResult Function() loading,
     required TResult Function(List<RepositorySummary> repositories) data,
-    required TResult Function(ApiException apiException) error,
+    required TResult Function(ApplicationException apiException) error,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -29,7 +29,7 @@ mixin _$UiState {
     TResult? Function()? initial,
     TResult? Function()? loading,
     TResult? Function(List<RepositorySummary> repositories)? data,
-    TResult? Function(ApiException apiException)? error,
+    TResult? Function(ApplicationException apiException)? error,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -37,7 +37,7 @@ mixin _$UiState {
     TResult Function()? initial,
     TResult Function()? loading,
     TResult Function(List<RepositorySummary> repositories)? data,
-    TResult Function(ApiException apiException)? error,
+    TResult Function(ApplicationException apiException)? error,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
@@ -130,7 +130,7 @@ class _$Initial with DiagnosticableTreeMixin implements Initial {
     required TResult Function() initial,
     required TResult Function() loading,
     required TResult Function(List<RepositorySummary> repositories) data,
-    required TResult Function(ApiException apiException) error,
+    required TResult Function(ApplicationException apiException) error,
   }) {
     return initial();
   }
@@ -141,7 +141,7 @@ class _$Initial with DiagnosticableTreeMixin implements Initial {
     TResult? Function()? initial,
     TResult? Function()? loading,
     TResult? Function(List<RepositorySummary> repositories)? data,
-    TResult? Function(ApiException apiException)? error,
+    TResult? Function(ApplicationException apiException)? error,
   }) {
     return initial?.call();
   }
@@ -152,7 +152,7 @@ class _$Initial with DiagnosticableTreeMixin implements Initial {
     TResult Function()? initial,
     TResult Function()? loading,
     TResult Function(List<RepositorySummary> repositories)? data,
-    TResult Function(ApiException apiException)? error,
+    TResult Function(ApplicationException apiException)? error,
     required TResult orElse(),
   }) {
     if (initial != null) {
@@ -248,7 +248,7 @@ class _$Loading with DiagnosticableTreeMixin implements Loading {
     required TResult Function() initial,
     required TResult Function() loading,
     required TResult Function(List<RepositorySummary> repositories) data,
-    required TResult Function(ApiException apiException) error,
+    required TResult Function(ApplicationException apiException) error,
   }) {
     return loading();
   }
@@ -259,7 +259,7 @@ class _$Loading with DiagnosticableTreeMixin implements Loading {
     TResult? Function()? initial,
     TResult? Function()? loading,
     TResult? Function(List<RepositorySummary> repositories)? data,
-    TResult? Function(ApiException apiException)? error,
+    TResult? Function(ApplicationException apiException)? error,
   }) {
     return loading?.call();
   }
@@ -270,7 +270,7 @@ class _$Loading with DiagnosticableTreeMixin implements Loading {
     TResult Function()? initial,
     TResult Function()? loading,
     TResult Function(List<RepositorySummary> repositories)? data,
-    TResult Function(ApiException apiException)? error,
+    TResult Function(ApplicationException apiException)? error,
     required TResult orElse(),
   }) {
     if (loading != null) {
@@ -401,7 +401,7 @@ class _$Data with DiagnosticableTreeMixin implements Data {
     required TResult Function() initial,
     required TResult Function() loading,
     required TResult Function(List<RepositorySummary> repositories) data,
-    required TResult Function(ApiException apiException) error,
+    required TResult Function(ApplicationException apiException) error,
   }) {
     return data(repositories);
   }
@@ -412,7 +412,7 @@ class _$Data with DiagnosticableTreeMixin implements Data {
     TResult? Function()? initial,
     TResult? Function()? loading,
     TResult? Function(List<RepositorySummary> repositories)? data,
-    TResult? Function(ApiException apiException)? error,
+    TResult? Function(ApplicationException apiException)? error,
   }) {
     return data?.call(repositories);
   }
@@ -423,7 +423,7 @@ class _$Data with DiagnosticableTreeMixin implements Data {
     TResult Function()? initial,
     TResult Function()? loading,
     TResult Function(List<RepositorySummary> repositories)? data,
-    TResult Function(ApiException apiException)? error,
+    TResult Function(ApplicationException apiException)? error,
     required TResult orElse(),
   }) {
     if (data != null) {
@@ -483,7 +483,7 @@ abstract class _$$ErrorCopyWith<$Res> {
   factory _$$ErrorCopyWith(_$Error value, $Res Function(_$Error) then) =
       __$$ErrorCopyWithImpl<$Res>;
   @useResult
-  $Res call({ApiException apiException});
+  $Res call({ApplicationException apiException});
 }
 
 /// @nodoc
@@ -501,7 +501,7 @@ class __$$ErrorCopyWithImpl<$Res> extends _$UiStateCopyWithImpl<$Res, _$Error>
       null == apiException
           ? _value.apiException
           : apiException // ignore: cast_nullable_to_non_nullable
-              as ApiException,
+              as ApplicationException,
     ));
   }
 }
@@ -512,7 +512,7 @@ class _$Error with DiagnosticableTreeMixin implements Error {
   const _$Error(this.apiException);
 
   @override
-  final ApiException apiException;
+  final ApplicationException apiException;
 
   @override
   String toString({DiagnosticLevel minLevel = DiagnosticLevel.info}) {
@@ -551,7 +551,7 @@ class _$Error with DiagnosticableTreeMixin implements Error {
     required TResult Function() initial,
     required TResult Function() loading,
     required TResult Function(List<RepositorySummary> repositories) data,
-    required TResult Function(ApiException apiException) error,
+    required TResult Function(ApplicationException apiException) error,
   }) {
     return error(apiException);
   }
@@ -562,7 +562,7 @@ class _$Error with DiagnosticableTreeMixin implements Error {
     TResult? Function()? initial,
     TResult? Function()? loading,
     TResult? Function(List<RepositorySummary> repositories)? data,
-    TResult? Function(ApiException apiException)? error,
+    TResult? Function(ApplicationException apiException)? error,
   }) {
     return error?.call(apiException);
   }
@@ -573,7 +573,7 @@ class _$Error with DiagnosticableTreeMixin implements Error {
     TResult Function()? initial,
     TResult Function()? loading,
     TResult Function(List<RepositorySummary> repositories)? data,
-    TResult Function(ApiException apiException)? error,
+    TResult Function(ApplicationException apiException)? error,
     required TResult orElse(),
   }) {
     if (error != null) {
@@ -621,9 +621,9 @@ class _$Error with DiagnosticableTreeMixin implements Error {
 }
 
 abstract class Error implements UiState {
-  const factory Error(final ApiException apiException) = _$Error;
+  const factory Error(final ApplicationException apiException) = _$Error;
 
-  ApiException get apiException;
+  ApplicationException get apiException;
   @JsonKey(ignore: true)
   _$$ErrorCopyWith<_$Error> get copyWith => throw _privateConstructorUsedError;
 }

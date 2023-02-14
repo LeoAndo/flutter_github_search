@@ -40,14 +40,3 @@ pub-add-freezed:
 	fvm flutter pub add --dev freezed
 	fvm flutter pub add json_annotation
 	fvm flutter pub add --dev json_serializable
-
-# riverpod packageの追加を行う (https://pub.dev/packages/flutter_riverpod/) (https://pub.dev/packages/hooks_riverpod/)
-.PHONY: pub-add-riverpod
-pub-add-riverpod:
-	fvm flutter pub add hooks_riverpod
-	fvm flutter pub add flutter_riverpod
-
-# logger packageの追加を行う (https://pub.dev/packages/logger/)
-.PHONY: pub-add-logger
-pub-add-logger:
-	fvm flutter pub add logger

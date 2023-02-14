@@ -9,10 +9,12 @@ class AppNetworkImage extends StatelessWidget {
     Key? key,
     required this.imageUrl,
     required this.placeholder,
+    required this.errorWidget,
   }) : super(key: key);
 
   final String imageUrl;
   final Widget placeholder;
+  final Widget errorWidget;
 
   @override
   Widget build(BuildContext context) {
@@ -20,7 +22,7 @@ class AppNetworkImage extends StatelessWidget {
       child: CachedNetworkImage(
         imageUrl: imageUrl,
         placeholder: (context, url) => placeholder,
-        errorWidget: (context, url, _) => placeholder,
+        errorWidget: (context, url, _) => errorWidget,
       ),
     );
   }
