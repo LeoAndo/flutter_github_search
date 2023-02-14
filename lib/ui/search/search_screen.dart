@@ -1,5 +1,6 @@
 // Flutter imports:
 import 'package:flutter/material.dart';
+import 'package:flutter_github_search/domain/exception/application_exception.dart';
 
 // Package imports:
 import 'package:flutter_riverpod/flutter_riverpod.dart';
@@ -8,7 +9,6 @@ import 'package:logger/logger.dart';
 // Project imports:
 import 'package:flutter_github_search/domain/model/repository_summary.dart';
 import 'package:flutter_github_search/ui/detail/detail_screen.dart';
-import '../../domain/exception/api_exceptions.dart';
 import '../components/app_error.dart';
 import '../components/app_loading.dart';
 import 'search_state_notifier.dart';
@@ -85,7 +85,7 @@ class _SearchScreenState extends ConsumerState<SearchScreen> {
                 .read(searchStateNotifierProvider.notifier)
                 .searchRepositories(query: value);
           }),
-      error: (ApiException e) {
+      error: (ApplicationException e) {
         return AppError(
           message: e.message,
           onReload: () {
