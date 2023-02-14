@@ -5,8 +5,9 @@ class EnvironmentVariableScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     const flavor = String.fromEnvironment('flavor');
-    const appName = String.fromEnvironment('appName');
-    const applicationIdSuffix = String.fromEnvironment('applicationIdSuffix');
+    const appName = String.fromEnvironment('flutterAppName');
+    const applicationIdSuffix =
+        String.fromEnvironment('flutterApplicationIdSuffix');
     const githubAccessToken = String.fromEnvironment('githubAccessToken');
     const githubApiDomain = String.fromEnvironment('githubApiDomain');
     return Scaffold(

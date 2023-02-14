@@ -1,7 +1,7 @@
 {
     "flavor": "staging",
-    "appName": "(Stg)GithubSearch",
-    "applicationIdSuffix": ".staging",
+    "flutterAppName": "(Stg)GithubSearch",
+    "flutterApplicationIdSuffix": ".staging",
     "githubAccessToken": "",
     "githubApiDomain": "api.github.com"
 }
