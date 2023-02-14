@@ -1,0 +1,7 @@
+{
+    "flavor": "staging",
+    "appName": "(Stg)GithubSearch",
+    "applicationIdSuffix": ".staging",
+    "githubAccessToken": "",
+    "githubApiDomain": "api.github.com"
+}

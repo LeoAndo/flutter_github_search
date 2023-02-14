@@ -1,0 +1,7 @@
+{
+    "flavor": "production",
+    "appName": "GithubSearch",
+    "applicationIdSuffix": "",
+    "githubAccessToken": "",
+    "githubApiDomain": "api.github.com"
+}
