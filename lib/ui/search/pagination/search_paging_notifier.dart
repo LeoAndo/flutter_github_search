@@ -2,6 +2,7 @@
 import 'package:flutter_github_search/data/api/github/github_api.dart';
 import 'package:flutter_github_search/domain/exception/application_exception.dart';
 import 'package:flutter_github_search/domain/exception/validation_exceptions.dart';
+import 'package:flutter_github_search/domain/model/repository_summary.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:logger/logger.dart';
 
@@ -19,29 +20,45 @@ final searchPagingStateNotifierProvider =
 });
 
 class SearchPagingStateNotifier extends StateNotifier<UiState> {
-  SearchPagingStateNotifier(this._repository) : super(const UiState.initial());
+  SearchPagingStateNotifier(this._repository)
+      : super(const UiState.initial(repositories: [], isLastPage: false));
   final GithubRepoRepository _repository;
 
-  void searchRepositories({required String query, required int page}) async {
+  void searchRepositories(
+      {required String query, required int page, bool refresh = false}) async {
+    Logger().d('ando searchRepositories page: $page, refresh: $refresh');
+    final List<RepositorySummary> repositories =
+        (refresh) ? [] : state.repositories;
     try {
-      state = const UiState.loading();
       if (query.isEmpty) {
         throw const InputValidationException("please input search word.");
       }
+      state = UiState.loading(
+          repositories: repositories,
+          isLastPage: state.isLastPage,
+          nextPageNo: state.nextPageNo);
 
       final newItems =
           await _repository.searchRepositories(query: query, page: page);
       final isLastPage = newItems.length < GithubApi.perPage;
       if (isLastPage) {
         state = UiState.data(
-            repositories: newItems, isLastPage: isLastPage, nextPageNo: null);
+            repositories: repositories + newItems,
+            isLastPage: isLastPage,
+            nextPageNo: null);
       } else {
         page++;
         state = UiState.data(
-            repositories: newItems, isLastPage: isLastPage, nextPageNo: page);
+            repositories: repositories + newItems,
+            isLastPage: isLastPage,
+            nextPageNo: page);
       }
     } on ApplicationException catch (e) {
-      state = UiState.error(e);
+      state = UiState.error(
+          repositories: repositories,
+          isLastPage: state.isLastPage,
+          nextPageNo: state.nextPageNo,
+          exception: e);
     }
   }
 

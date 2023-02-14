@@ -13,11 +13,21 @@ part 'ui_state.freezed.dart';
 /// nextPageNoがNullの場合は、次ページなしの運用。
 @freezed
 class UiState with _$UiState {
-  const factory UiState.initial() = Initial;
-  const factory UiState.loading() = Loading;
+  const factory UiState.initial(
+      {required List<RepositorySummary> repositories,
+      required bool isLastPage,
+      @Default(1) int nextPageNo}) = Initial;
+  const factory UiState.loading(
+      {required List<RepositorySummary> repositories,
+      required bool isLastPage,
+      required int? nextPageNo}) = Loading;
   const factory UiState.data(
       {required List<RepositorySummary> repositories,
       required bool isLastPage,
-      int? nextPageNo}) = Data;
-  const factory UiState.error(ApplicationException exception) = Error;
+      required int? nextPageNo}) = Data;
+  const factory UiState.error(
+      {required List<RepositorySummary> repositories,
+      required bool isLastPage,
+      required int? nextPageNo,
+      required ApplicationException exception}) = Error;
 }
