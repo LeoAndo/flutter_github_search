@@ -4,7 +4,6 @@ import 'package:flutter/material.dart';
 // Project imports:
 import 'package:flutter_github_search/ui/search/pagination/search_paging_screen.dart';
 import 'package:flutter_github_search/ui/search/search_screen.dart';
-
 import '../environment_variable/environment_variable_screen.dart';
 
 class HomeScreen extends StatelessWidget {
