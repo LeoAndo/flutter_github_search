@@ -1,10 +1,14 @@
+// Flutter imports:
 import 'package:flutter/material.dart';
-import 'package:flutter_github_search/data/repository/github_repo_repository_impl.dart';
-import 'package:flutter_github_search/ui/components/app_error.dart';
-import 'package:flutter_github_search/ui/detail/detail_screen.dart';
+
+// Package imports:
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:flutter_test/flutter_test.dart';
 
+// Project imports:
+import 'package:flutter_github_search/data/repository/github_repo_repository_impl.dart';
+import 'package:flutter_github_search/ui/components/app_error.dart';
+import 'package:flutter_github_search/ui/detail/detail_screen.dart';
 import '../../data/repository/fake_github_repo_repository.dart';
 
 /// see: https://riverpod.dev/ja/docs/cookbooks/testing

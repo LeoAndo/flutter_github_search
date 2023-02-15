@@ -1,9 +1,11 @@
-import 'package:flutter_github_search/data/repository/github_repo_repository_impl.dart';
-import 'package:flutter_github_search/ui/detail/detail_state_notifier.dart';
-import 'package:flutter_github_search/ui/detail/ui_state.dart';
+// Package imports:
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:flutter_test/flutter_test.dart';
 
+// Project imports:
+import 'package:flutter_github_search/data/repository/github_repo_repository_impl.dart';
+import 'package:flutter_github_search/ui/detail/detail_state_notifier.dart';
+import 'package:flutter_github_search/ui/detail/ui_state.dart';
 import '../../data/repository/fake_github_repo_repository.dart';
 
 void main() {
