@@ -38,6 +38,9 @@ class _DetailScreenState extends ConsumerState<DetailScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      appBar: AppBar(
+        title: const Text('Detail Screen'),
+      ),
       body: _buildBody(context, ref),
     );
   }
