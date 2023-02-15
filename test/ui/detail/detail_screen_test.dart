@@ -7,6 +7,7 @@ import 'package:flutter_test/flutter_test.dart';
 
 import '../../data/repository/fake_github_repo_repository.dart';
 
+/// see: https://riverpod.dev/ja/docs/cookbooks/testing
 void main() {
   testWidgets('stateIsSuccess', (tester) async {
     final fakeRepo = FakeGithubRepoRepository(isSuccess: true);
