@@ -1,4 +1,5 @@
 // Flutter imports:
+import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 
 class EnvironmentVariableScreen extends StatelessWidget {
@@ -19,6 +20,18 @@ class EnvironmentVariableScreen extends StatelessWidget {
           child: SingleChildScrollView(
         child: Column(
           children: const [
+            ListTile(
+              leading: Text('kDebugMode'),
+              title: Text('kDebugMode: $kDebugMode'),
+            ),
+            ListTile(
+              leading: Text('kProfileMode'),
+              title: Text('kProfileMode: $kProfileMode'),
+            ),
+            ListTile(
+              leading: Text('kReleaseMode'),
+              title: Text('kReleaseMode: $kReleaseMode'),
+            ),
             ListTile(
               leading: Text('flavor'),
               title: Text(flavor),

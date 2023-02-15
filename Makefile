@@ -9,7 +9,7 @@ clean:
 	fvm flutter pub get
 	fvm flutter pub run build_runner build --delete-conflicting-outputs
 
-# freezed関連のファイルを修正したら、こちらの自動生成コマンドを実行する
+# freezed関連のファイルを修正したら、以下の自動生成コマンドを実行してください
 .PHONY: run-gen
 run-gen:
 	fvm flutter pub run build_runner build --delete-conflicting-outputs
@@ -32,11 +32,33 @@ format:
 pub-upgrade:
 	fvm flutter pub upgrade
 
-# freezed packageの追加を行う (https://pub.dev/packages/freezed)
-.PHONY: pub-add-freezed
-pub-add-freezed:
-	fvm flutter pub add freezed_annotation
-	fvm flutter pub add --dev build_runner
-	fvm flutter pub add --dev freezed
-	fvm flutter pub add json_annotation
-	fvm flutter pub add --dev json_serializable
+# https://docs.flutter.dev/deployment/android
+.PHONY: build-android-dev
+build-android-dev:
+	fvm flutter build apk --release --dart-define-from-file=dart_define/development.json
+
+.PHONY: build-android-stg
+build-android-stg:
+	fvm flutter build apk --release --dart-define-from-file=dart_define/staging.json
+
+.PHONY: build-android-prod
+build-android-prod:
+	fvm flutter build apk --release --dart-define-from-file=dart_define/production.json
+
+.PHONY: build-android-bundle
+build-android-bundle:
+	flutter build appbundle --release --dart-define-from-file=dart_define/production.json
+
+# https://docs.flutter.dev/deployment/ios
+.PHONY: build-ios
+build-ios:
+	flutter build ios --release --dart-define-from-file=dart_define/production.json
+
+.PHONY: build-ipa
+build-ipa:
+	flutter build ipa --release --dart-define-from-file=dart_define/production.json
+
+# https://docs.flutter.dev/deployment/macos
+.PHONY: build-macos
+build-ipa:
+	flutter build macos --release --dart-define-from-file=dart_define/production.json
