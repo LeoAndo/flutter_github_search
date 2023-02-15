@@ -48,7 +48,10 @@ OS12以上でM3のDynamic Colorが適用されていることを確認<br>
 |<img src="https://user-images.githubusercontent.com/16476224/218938289-911a480d-9984-4459-958a-e1166a1d7a46.png" width=320 /> |<img src="https://user-images.githubusercontent.com/16476224/218938512-b07600ca-0022-4c54-85a0-10dfa028064c.png" width=320 /> | <img src="https://user-images.githubusercontent.com/16476224/218938858-878e496e-b7fe-46e4-a005-702724804a8c.png" /> |
 
 # 参考にしたリポジトリ
+
 ## dartの実装まわり
 https://github.com/watanavex/flutter_github_search<br>
 ## CI/CD周り
 https://github.com/yorifuji/flutter_github_actions_template<br>
+## 環境(dev/stg/prod)の切り替え
+https://zenn.dev/altiveinc/articles/separating-environments-in-flutter<br>
