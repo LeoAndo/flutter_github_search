@@ -1,5 +1,6 @@
 // Flutter imports:
 import 'package:flutter/material.dart';
+import 'package:flutter_github_search/ui/res/values/strings.dart' as strings;
 
 class AppError extends StatelessWidget {
   final String message;
@@ -35,7 +36,7 @@ class AppError extends StatelessWidget {
                 ElevatedButton.icon(
                     onPressed: onReload,
                     icon: const Icon(Icons.error_outline),
-                    label: const Text('reload'))
+                    label: const Text(strings.reload))
               ],
             ),
           ),

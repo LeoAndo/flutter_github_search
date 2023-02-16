@@ -11,6 +11,7 @@ import 'package:flutter_github_search/domain/model/repository_summary.dart';
 import 'package:flutter_github_search/ui/detail/detail_screen.dart';
 import '../component/app_error.dart';
 import '../component/app_loading.dart';
+import '../res/values/strings.dart' as strings;
 import 'search_state_notifier.dart';
 
 class SearchScreen extends ConsumerStatefulWidget {
@@ -40,7 +41,7 @@ class _SearchScreenState extends ConsumerState<SearchScreen> {
   Widget build(BuildContext context) {
     return Scaffold(
         appBar: AppBar(
-          title: const Text('Search Screen'),
+          title: const Text(strings.titleSearchScreen),
         ),
         body: _buildBody(ref));
   }

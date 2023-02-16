@@ -12,6 +12,7 @@ import '../../ui/detail/detail_state_notifier.dart';
 import '../component/app_error.dart';
 import '../component/app_loading.dart';
 import '../component/app_network_image.dart';
+import '../res/values/strings.dart' as strings;
 
 class DetailScreen extends ConsumerStatefulWidget {
   final String ownerName;
@@ -39,7 +40,7 @@ class _DetailScreenState extends ConsumerState<DetailScreen> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: const Text('Detail Screen'),
+        title: const Text(strings.titleDetailScreen),
       ),
       body: _buildBody(context, ref),
     );
@@ -105,16 +106,16 @@ class _DetailScreenState extends ConsumerState<DetailScreen> {
             ),
             const SizedBox(height: 40),
             _buildIconWithText(const Icon(Icons.flutter_dash),
-                '${repositoryDetail.forksCount} forks'),
+                '${repositoryDetail.forksCount}'.formatForks()),
             const SizedBox(height: 16),
             _buildIconWithText(const Icon(Icons.star),
-                '${repositoryDetail.stargazersCount} stars'),
+                '${repositoryDetail.stargazersCount}'.formatStars()),
             const SizedBox(height: 16),
             _buildIconWithText(const Icon(Icons.remove_red_eye),
-                '${repositoryDetail.watchersCount} watchers'),
+                '${repositoryDetail.watchersCount}'.formatWatchers()),
             const SizedBox(height: 16),
             _buildIconWithText(const Icon(Icons.task),
-                'open ${repositoryDetail.openIssuesCount} issues'),
+                '${repositoryDetail.openIssuesCount}'.formatOpenIssues()),
           ],
         ),
       ),
