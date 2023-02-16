@@ -9,8 +9,8 @@ import 'package:logger/logger.dart';
 import 'package:flutter_github_search/domain/exception/application_exception.dart';
 import 'package:flutter_github_search/domain/model/repository_summary.dart';
 import 'package:flutter_github_search/ui/detail/detail_screen.dart';
-import '../components/app_error.dart';
-import '../components/app_loading.dart';
+import '../component/app_error.dart';
+import '../component/app_loading.dart';
 import 'search_state_notifier.dart';
 
 class SearchScreen extends ConsumerStatefulWidget {

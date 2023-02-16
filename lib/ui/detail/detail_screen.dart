@@ -9,9 +9,9 @@ import 'package:logger/logger.dart';
 import '../../domain/exception/api_exceptions.dart';
 import '../../domain/model/repository_detail.dart';
 import '../../ui/detail/detail_state_notifier.dart';
-import '../components/app_error.dart';
-import '../components/app_loading.dart';
-import '../components/app_network_image.dart';
+import '../component/app_error.dart';
+import '../component/app_loading.dart';
+import '../component/app_network_image.dart';
 
 class DetailScreen extends ConsumerStatefulWidget {
   final String ownerName;
