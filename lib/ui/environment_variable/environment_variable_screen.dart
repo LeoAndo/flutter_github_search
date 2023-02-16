@@ -2,6 +2,9 @@
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 
+// Project imports:
+import '../res/values/strings.dart' as strings;
+
 class EnvironmentVariableScreen extends StatelessWidget {
   const EnvironmentVariableScreen({super.key});
   @override
@@ -14,7 +17,7 @@ class EnvironmentVariableScreen extends StatelessWidget {
     const githubApiDomain = String.fromEnvironment('githubApiDomain');
     return Scaffold(
       appBar: AppBar(
-        title: const Text('Env Variable'),
+        title: const Text(strings.titleEnvironmentVariableScreen),
       ),
       body: SafeArea(
           child: SingleChildScrollView(
