@@ -10,6 +10,7 @@ import 'package:flutter_github_search/domain/model/repository_summary.dart';
 import 'package:flutter_github_search/ui/detail/detail_screen.dart';
 import 'package:flutter_github_search/ui/search/pagination/search_paging_notifier.dart';
 import 'package:flutter_github_search/ui/search/pagination/ui_state.dart';
+import '../../res/values/strings.dart' as strings;
 
 class SearchPagingScreen extends ConsumerStatefulWidget {
   const SearchPagingScreen({super.key});
@@ -40,7 +41,7 @@ class _SearchPagingScreenState extends ConsumerState<SearchPagingScreen> {
   Widget build(BuildContext context) {
     return Scaffold(
         appBar: AppBar(
-          title: const Text('Search Paging Screen'),
+          title: const Text(strings.titleSearchPagingScreen),
         ),
         body: _buildBody());
   }
@@ -174,7 +175,7 @@ class _SearchPagingScreenState extends ConsumerState<SearchPagingScreen> {
     return uiState.repositories.isEmpty
         ? (uiState is Data)
             ? const Center(
-                child: Text('result empty..'),
+                child: Text(strings.listItemIsEmpty),
               )
             : Container()
         : NotificationListener<ScrollNotification>(

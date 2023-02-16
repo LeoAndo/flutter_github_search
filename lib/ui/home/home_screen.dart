@@ -6,6 +6,7 @@ import 'package:flutter_github_search/ui/package_info/package_info_screen.dart';
 import 'package:flutter_github_search/ui/search/pagination/search_paging_screen.dart';
 import 'package:flutter_github_search/ui/search/search_screen.dart';
 import '../environment_variable/environment_variable_screen.dart';
+import '../res/values/strings.dart' as strings;
 
 class HomeScreen extends StatelessWidget {
   const HomeScreen({super.key, required this.title});
@@ -17,19 +18,18 @@ class HomeScreen extends StatelessWidget {
     return Scaffold(
       appBar: AppBar(title: Text(title)),
       body: const Center(
-        child: Text("Home Page."),
+        child: Text(strings.titleHomeScreen),
       ),
       drawer: Drawer(
         child: ListView(
           padding: EdgeInsets.zero,
           children: [
             const DrawerHeader(
-              child: Text(
-                  'Paging compatible / non-compatible versions are available.'),
+              child: Text(strings.homeDrawableHeader),
             ),
             ListTile(
                 leading: const Icon(Icons.computer),
-                title: const Text("Environment Variable"),
+                title: const Text(strings.titleEnvironmentVariableScreen),
                 onTap: () {
                   Navigator.push(
                       context,
