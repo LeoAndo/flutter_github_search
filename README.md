@@ -23,7 +23,7 @@ Flutterで作るGithubリポジトリ検索アプリになります。<br>
 
 | Android Resizable Emulator API 33 | i phone 14 Pro ios 16.2  | macos |
 |:---|:---:|:---:|
-|<img src="https://user-images.githubusercontent.com/16476224/218934191-12a8762f-054e-4647-8316-4f4797bcd4bf.gif" width=320 /> |<img src="https://user-images.githubusercontent.com/16476224/218935617-3edd9a0c-fc37-4851-830c-9f78fb8e6df5.gif" width=320 /> | <img src="https://user-images.githubusercontent.com/16476224/218936421-2725e7a5-6b5f-4af0-8254-f29c5de1b434.png" /> |
+|<img src="https://user-images.githubusercontent.com/16476224/219412356-73d15e57-fca4-4984-a3c9-10a6510d45eb.gif" width=320 /> |<img src="https://user-images.githubusercontent.com/16476224/218935617-3edd9a0c-fc37-4851-830c-9f78fb8e6df5.gif" width=320 /> | <img src="https://user-images.githubusercontent.com/16476224/218936421-2725e7a5-6b5f-4af0-8254-f29c5de1b434.png" /> |
 
 # capture: 異常系
 
