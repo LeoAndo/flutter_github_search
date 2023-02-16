@@ -1,5 +1,7 @@
 // Flutter imports:
 import 'package:flutter/material.dart';
+
+// Project imports:
 import 'package:flutter_github_search/ui/res/values/strings.dart' as strings;
 
 class AppError extends StatelessWidget {

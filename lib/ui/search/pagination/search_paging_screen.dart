@@ -10,7 +10,6 @@ import 'package:flutter_github_search/domain/model/repository_summary.dart';
 import 'package:flutter_github_search/ui/detail/detail_screen.dart';
 import 'package:flutter_github_search/ui/search/pagination/search_paging_notifier.dart';
 import 'package:flutter_github_search/ui/search/pagination/ui_state.dart';
-
 import '../../res/values/strings.dart' as strings;
 
 class SearchPagingScreen extends ConsumerStatefulWidget {

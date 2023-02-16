@@ -6,12 +6,12 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:logger/logger.dart';
 
 // Project imports:
+import 'package:flutter_github_search/ui/component/app_avatar_network_image.dart';
 import '../../domain/exception/api_exceptions.dart';
 import '../../domain/model/repository_detail.dart';
 import '../../ui/detail/detail_state_notifier.dart';
 import '../component/app_error.dart';
 import '../component/app_loading.dart';
-import '../component/app_network_image.dart';
 import '../res/values/strings.dart' as strings;
 
 class DetailScreen extends ConsumerStatefulWidget {
@@ -81,7 +81,7 @@ class _DetailScreenState extends ConsumerState<DetailScreen> {
         padding: const EdgeInsets.all(16),
         child: Column(
           children: [
-            _buildOwnerImage(repositoryDetail.ownerAvatarUrl),
+            AppAvatarNetworkImage(url: repositoryDetail.ownerAvatarUrl),
             const SizedBox(height: 16),
             Text(
               repositoryDetail.name,
@@ -118,27 +118,6 @@ class _DetailScreenState extends ConsumerState<DetailScreen> {
                 '${repositoryDetail.openIssuesCount}'.formatOpenIssues()),
           ],
         ),
-      ),
-    );
-  }
-
-  Widget _buildOwnerImage(String imageUrl) {
-    const imageWidthFactor = 0.5;
-    final size = MediaQuery.of(context).size;
-    final placeholder = Icon(
-      Icons.person,
-      size: size.width * imageWidthFactor,
-    );
-    final errorWidget = Icon(
-      Icons.error_outline,
-      size: size.width * imageWidthFactor,
-    );
-    return FractionallySizedBox(
-      widthFactor: imageWidthFactor,
-      child: AppNetworkImage(
-        imageUrl: imageUrl,
-        placeholder: placeholder,
-        errorWidget: errorWidget,
       ),
     );
   }
