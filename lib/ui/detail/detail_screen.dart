@@ -52,7 +52,7 @@ class _DetailScreenState extends ConsumerState<DetailScreen> {
       // Widgetの描画が完了した時に呼ばれるコールバック
       uiState.whenOrNull(
         initial: () {
-          ref.read(detailStateNotifierProvider.notifier).fetchRepositoryDetail(
+          ref.read(detailStateNotifierProvider.notifier).getRepositoryDetail(
               ownerName: widget.ownerName,
               repositoryName: widget.repositoryName);
         },
@@ -68,7 +68,7 @@ class _DetailScreenState extends ConsumerState<DetailScreen> {
           onReload: () => {
                 ref
                     .read(detailStateNotifierProvider.notifier)
-                    .fetchRepositoryDetail(
+                    .getRepositoryDetail(
                         ownerName: widget.ownerName,
                         repositoryName: widget.repositoryName)
               }),

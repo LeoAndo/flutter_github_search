@@ -7,6 +7,6 @@ abstract class GithubRepoRepository {
     required String query,
     required int page,
   });
-  Future<RepositoryDetail> fetchRepositoryDetail(
+  Future<RepositoryDetail> getRepositoryDetail(
       {required String ownerName, required String repositoryName});
 }
