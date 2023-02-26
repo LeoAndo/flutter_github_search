@@ -1,7 +1,7 @@
 # 概要
 
 Flutterで作るGithubリポジトリ検索アプリになります。<br>
-<strong>本プロジェクトは android / ios / macosのみ動作サポートしています。</strong><br>
+<strong>本プロジェクトは android / ios / macosのみ動作サポートしています</strong><br>
 
 # アーキテクチャ
 変更が多い内容ですので、[Wiki](https://github.com/LeoAndo/flutter_github_search/wiki/architecture)にまとめています。<br>
