@@ -21,21 +21,6 @@ if (flutterVersionName == null) {
     flutterVersionName = '1.0'
 }
 
-// Android 署名設定 - START
-def flutterAndroidKeyAlias = localProperties.getProperty('flutter.androidKeyAlias')
-if (flutterAndroidKeyAlias == null) {
-    flutterAndroidKeyAlias = 'xxx'
-}
-def flutterAndroidKeyPassword = localProperties.getProperty('flutter.androidKeyPassword')
-if (flutterAndroidKeyPassword == null) {
-    flutterAndroidKeyPassword = 'xxx'
-}
-def flutterAndroidStorePassword = localProperties.getProperty('flutter.androidStorePassword')
-if (flutterAndroidStorePassword == null) {
-    flutterAndroidStorePassword = 'xxx'
-}
-// Android 署名設定 - END
-
 apply plugin: 'com.android.application'
 apply plugin: 'kotlin-android'
 apply from: "$flutterRoot/packages/flutter_tools/gradle/flutter.gradle"
@@ -59,9 +44,9 @@ android {
 
     defaultConfig {
         // TODO: Specify your own unique Application ID (https://developer.android.com/studio/build/application-id.html).
-        applicationId "com.leoleo.githubsearch.flutter_github_search"
+        applicationId "com.leoleo.template.flutter_app_template"
         // You can update the following values to match your application needs.
-        // For more information, see: https://docs.flutter.dev/deployment/android#reviewing-the-build-configuration.
+        // For more information, see: https://docs.flutter.dev/deployment/android#reviewing-the-gradle-build-configuration.
         minSdkVersion flutter.minSdkVersion
         targetSdkVersion flutter.targetSdkVersion
         versionCode flutterVersionCode.toInteger()
@@ -77,9 +62,9 @@ android {
         debug { storeFile rootProject.file('debug.keystore') }
         release {
             storeFile rootProject.file('release.keystore')
-            storePassword flutterAndroidStorePassword
-            keyAlias flutterAndroidKeyAlias
-            keyPassword flutterAndroidKeyPassword
+            storePassword localProperties.getProperty('ANDROID_STORE_PASSWORD')
+            keyAlias localProperties.getProperty('ANDROID_KEY_ALIAS')
+            keyPassword localProperties.getProperty('ANDROID_KEY_PASSWORD')
         }
     }
     buildTypes {
