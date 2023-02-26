@@ -28,7 +28,7 @@ class FakeGithubRepoRepository implements GithubRepoRepository {
   }
 
   @override
-  Future<RepositoryDetail> fetchRepositoryDetail(
+  Future<RepositoryDetail> getRepositoryDetail(
       {required String ownerName, required String repositoryName}) async {
     return (isSuccess) ? successData : throw errorData;
   }

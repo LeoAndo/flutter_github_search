@@ -18,11 +18,11 @@ class DetailStateNotifier extends StateNotifier<UiState> {
   DetailStateNotifier(this._repository) : super(const UiState.initial());
   final GithubRepoRepository _repository;
 
-  void fetchRepositoryDetail(
+  void getRepositoryDetail(
       {required String ownerName, required String repositoryName}) async {
     try {
       state = const UiState.loading();
-      final data = await _repository.fetchRepositoryDetail(
+      final data = await _repository.getRepositoryDetail(
           ownerName: ownerName, repositoryName: repositoryName);
       state = UiState.data(data);
     } on ApiException catch (e) {

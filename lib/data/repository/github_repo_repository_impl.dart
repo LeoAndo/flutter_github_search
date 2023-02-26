@@ -27,7 +27,7 @@ class GithubRepoRepositoryImpl implements GithubRepoRepository {
   }
 
   @override
-  Future<RepositoryDetail> fetchRepositoryDetail(
+  Future<RepositoryDetail> getRepositoryDetail(
       {required String ownerName, required String repositoryName}) async {
     final ret = await _api.fetchRepositoryDetail(
         ownerName: ownerName, repositoryName: repositoryName);
